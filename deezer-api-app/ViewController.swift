@@ -1,17 +1,16 @@
-//
-//  ViewController.swift
-//  deezer-api-app
-//
-//  Created by Mikolaj Piechocki on 25/01/2021.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .red
     }
 
 
