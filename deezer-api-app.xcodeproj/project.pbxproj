@@ -13,18 +13,10 @@
 		8D319B8125BF71ED0076ACC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D319B8025BF71ED0076ACC3 /* Assets.xcassets */; };
 		8D319B8425BF71ED0076ACC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D319B8225BF71ED0076ACC3 /* LaunchScreen.storyboard */; };
 		8D319B8F25BF71ED0076ACC3 /* deezer_api_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B8E25BF71ED0076ACC3 /* deezer_api_appTests.swift */; };
-		8D319B9A25BF71ED0076ACC3 /* deezer_api_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B9925BF71ED0076ACC3 /* deezer_api_appUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		8D319B8B25BF71ED0076ACC3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8D319B6C25BF71EB0076ACC3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D319B7325BF71EB0076ACC3;
-			remoteInfo = "deezer-api-app";
-		};
-		8D319B9625BF71ED0076ACC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8D319B6C25BF71EB0076ACC3 /* Project object */;
 			proxyType = 1;
@@ -44,9 +36,6 @@
 		8D319B8A25BF71ED0076ACC3 /* deezer-api-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "deezer-api-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D319B8E25BF71ED0076ACC3 /* deezer_api_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deezer_api_appTests.swift; sourceTree = "<group>"; };
 		8D319B9025BF71ED0076ACC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D319B9525BF71ED0076ACC3 /* deezer-api-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "deezer-api-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D319B9925BF71ED0076ACC3 /* deezer_api_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deezer_api_appUITests.swift; sourceTree = "<group>"; };
-		8D319B9B25BF71ED0076ACC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,13 +53,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8D319B9225BF71ED0076ACC3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,7 +61,6 @@
 			children = (
 				8D319B7625BF71EB0076ACC3 /* deezer-api-app */,
 				8D319B8D25BF71ED0076ACC3 /* deezer-api-appTests */,
-				8D319B9825BF71ED0076ACC3 /* deezer-api-appUITests */,
 				8D319B7525BF71EB0076ACC3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,7 +70,6 @@
 			children = (
 				8D319B7425BF71EB0076ACC3 /* deezer-api-app.app */,
 				8D319B8A25BF71ED0076ACC3 /* deezer-api-appTests.xctest */,
-				8D319B9525BF71ED0076ACC3 /* deezer-api-appUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,9 +77,9 @@
 		8D319B7625BF71EB0076ACC3 /* deezer-api-app */ = {
 			isa = PBXGroup;
 			children = (
-				8D319B7725BF71EB0076ACC3 /* AppDelegate.swift */,
-				8D319B7925BF71EB0076ACC3 /* SceneDelegate.swift */,
-				8D319B7B25BF71EB0076ACC3 /* ViewController.swift */,
+				8D327D9725C0ACF1005FF299 /* Screens */,
+				8D327D9625C0ACE0005FF299 /* Application */,
+				8D327D9525C0ACDB005FF299 /* Networking */,
 				8D319B8025BF71ED0076ACC3 /* Assets.xcassets */,
 				8D319B8225BF71ED0076ACC3 /* LaunchScreen.storyboard */,
 				8D319B8525BF71ED0076ACC3 /* Info.plist */,
@@ -116,13 +96,28 @@
 			path = "deezer-api-appTests";
 			sourceTree = "<group>";
 		};
-		8D319B9825BF71ED0076ACC3 /* deezer-api-appUITests */ = {
+		8D327D9525C0ACDB005FF299 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				8D319B9925BF71ED0076ACC3 /* deezer_api_appUITests.swift */,
-				8D319B9B25BF71ED0076ACC3 /* Info.plist */,
 			);
-			path = "deezer-api-appUITests";
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		8D327D9625C0ACE0005FF299 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8D319B7725BF71EB0076ACC3 /* AppDelegate.swift */,
+				8D319B7925BF71EB0076ACC3 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8D327D9725C0ACF1005FF299 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				8D319B7B25BF71EB0076ACC3 /* ViewController.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,24 +158,6 @@
 			productReference = 8D319B8A25BF71ED0076ACC3 /* deezer-api-appTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8D319B9425BF71ED0076ACC3 /* deezer-api-appUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8D319BA425BF71ED0076ACC3 /* Build configuration list for PBXNativeTarget "deezer-api-appUITests" */;
-			buildPhases = (
-				8D319B9125BF71ED0076ACC3 /* Sources */,
-				8D319B9225BF71ED0076ACC3 /* Frameworks */,
-				8D319B9325BF71ED0076ACC3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8D319B9725BF71ED0076ACC3 /* PBXTargetDependency */,
-			);
-			name = "deezer-api-appUITests";
-			productName = "deezer-api-appUITests";
-			productReference = 8D319B9525BF71ED0076ACC3 /* deezer-api-appUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -194,10 +171,6 @@
 						CreatedOnToolsVersion = 12.3;
 					};
 					8D319B8925BF71ED0076ACC3 = {
-						CreatedOnToolsVersion = 12.3;
-						TestTargetID = 8D319B7325BF71EB0076ACC3;
-					};
-					8D319B9425BF71ED0076ACC3 = {
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = 8D319B7325BF71EB0076ACC3;
 					};
@@ -218,7 +191,6 @@
 			targets = (
 				8D319B7325BF71EB0076ACC3 /* deezer-api-app */,
 				8D319B8925BF71ED0076ACC3 /* deezer-api-appTests */,
-				8D319B9425BF71ED0076ACC3 /* deezer-api-appUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -234,13 +206,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8D319B8825BF71ED0076ACC3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D319B9325BF71ED0076ACC3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,14 +233,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8D319B9125BF71ED0076ACC3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D319B9A25BF71ED0076ACC3 /* deezer_api_appUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -283,11 +240,6 @@
 			isa = PBXTargetDependency;
 			target = 8D319B7325BF71EB0076ACC3 /* deezer-api-app */;
 			targetProxy = 8D319B8B25BF71ED0076ACC3 /* PBXContainerItemProxy */;
-		};
-		8D319B9725BF71ED0076ACC3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D319B7325BF71EB0076ACC3 /* deezer-api-app */;
-			targetProxy = 8D319B9625BF71ED0076ACC3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -497,44 +449,6 @@
 			};
 			name = Release;
 		};
-		8D319BA525BF71ED0076ACC3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "deezer-api-appUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mikopiechocki.deezer-api-appUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "deezer-api-app";
-			};
-			name = Debug;
-		};
-		8D319BA625BF71ED0076ACC3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "deezer-api-appUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mikopiechocki.deezer-api-appUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "deezer-api-app";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -561,15 +475,6 @@
 			buildConfigurations = (
 				8D319BA225BF71ED0076ACC3 /* Debug */,
 				8D319BA325BF71ED0076ACC3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8D319BA425BF71ED0076ACC3 /* Build configuration list for PBXNativeTarget "deezer-api-appUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8D319BA525BF71ED0076ACC3 /* Debug */,
-				8D319BA625BF71ED0076ACC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
