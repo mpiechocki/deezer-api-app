@@ -9,7 +9,7 @@ class APIClient: APIClientProtocol {
 
     func perform(_ endpoint: APIEndpoint) -> AnyPublisher<SearchResult, APIError> {
         guard let url = endpoint.url else {
-            return Fail<SearchResult, APIError>(error: APIError.urlError).eraseToAnyPublisher()
+            return Fail<SearchResult, APIError>(error: APIError.somethingWentWrong).eraseToAnyPublisher()
         }
 
         return dataTaskProvider.taskPublisher(for: url)
