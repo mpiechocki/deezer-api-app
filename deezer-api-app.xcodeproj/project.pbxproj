@@ -22,6 +22,8 @@
 		8DABAE1425C1FE71000F1E62 /* DeezerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE1325C1FE71000F1E62 /* DeezerServiceTests.swift */; };
 		8DABAE1A25C201CC000F1E62 /* DeezerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE1925C201CC000F1E62 /* DeezerServiceProtocol.swift */; };
 		8DABAE1E25C201EE000F1E62 /* APIClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE1D25C201EE000F1E62 /* APIClientSpy.swift */; };
+		8DABAE2525C202DA000F1E62 /* SearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE2425C202DA000F1E62 /* SearchViewControllerTests.swift */; };
+		8DABAE2B25C20DA7000F1E62 /* DeezerServiceSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE2A25C20DA7000F1E62 /* DeezerServiceSpy.swift */; };
 		8DF62E2D25C1CB1500A20FE3 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF62E2C25C1CB1500A20FE3 /* APIEndpoint.swift */; };
 		8DF62E3225C1CE1700A20FE3 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF62E3125C1CE1700A20FE3 /* SearchResult.swift */; };
 		8DF62E3825C1CFAA00A20FE3 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF62E3725C1CFAA00A20FE3 /* Artist.swift */; };
@@ -60,6 +62,8 @@
 		8DABAE1325C1FE71000F1E62 /* DeezerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeezerServiceTests.swift; sourceTree = "<group>"; };
 		8DABAE1925C201CC000F1E62 /* DeezerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeezerServiceProtocol.swift; sourceTree = "<group>"; };
 		8DABAE1D25C201EE000F1E62 /* APIClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientSpy.swift; sourceTree = "<group>"; };
+		8DABAE2425C202DA000F1E62 /* SearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTests.swift; sourceTree = "<group>"; };
+		8DABAE2A25C20DA7000F1E62 /* DeezerServiceSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeezerServiceSpy.swift; sourceTree = "<group>"; };
 		8DF62E2C25C1CB1500A20FE3 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		8DF62E3125C1CE1700A20FE3 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		8DF62E3725C1CFAA00A20FE3 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 		8D319B8D25BF71ED0076ACC3 /* deezer-api-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				8DABAE2225C202C9000F1E62 /* Screens */,
 				8D319B9025BF71ED0076ACC3 /* Info.plist */,
 				8DF62E3B25C1D08900A20FE3 /* JSONs */,
 				8D5D1E8525C19117003989E2 /* Mocks */,
@@ -170,6 +175,7 @@
 			children = (
 				8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */,
 				8DABAE1D25C201EE000F1E62 /* APIClientSpy.swift */,
+				8DABAE2A25C20DA7000F1E62 /* DeezerServiceSpy.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -216,6 +222,22 @@
 				8DABAE1325C1FE71000F1E62 /* DeezerServiceTests.swift */,
 			);
 			path = DeezerService;
+			sourceTree = "<group>";
+		};
+		8DABAE2225C202C9000F1E62 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				8DABAE2325C202CE000F1E62 /* Search */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		8DABAE2325C202CE000F1E62 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8DABAE2425C202DA000F1E62 /* SearchViewControllerTests.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		8DF62E3025C1CE0600A20FE3 /* Model */ = {
@@ -367,7 +389,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5D1E8725C1912E003989E2 /* DataTaskProviderSpy.swift in Sources */,
+				8DABAE2525C202DA000F1E62 /* SearchViewControllerTests.swift in Sources */,
 				8D327DA525C0B683005FF299 /* APIClientTests.swift in Sources */,
+				8DABAE2B25C20DA7000F1E62 /* DeezerServiceSpy.swift in Sources */,
 				8DABAE1E25C201EE000F1E62 /* APIClientSpy.swift in Sources */,
 				8DABAE1425C1FE71000F1E62 /* DeezerServiceTests.swift in Sources */,
 			);
