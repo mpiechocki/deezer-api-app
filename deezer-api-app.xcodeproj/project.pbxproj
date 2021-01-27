@@ -12,7 +12,11 @@
 		8D319B7C25BF71EB0076ACC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B7B25BF71EB0076ACC3 /* ViewController.swift */; };
 		8D319B8125BF71ED0076ACC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D319B8025BF71ED0076ACC3 /* Assets.xcassets */; };
 		8D319B8425BF71ED0076ACC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D319B8225BF71ED0076ACC3 /* LaunchScreen.storyboard */; };
-		8D319B8F25BF71ED0076ACC3 /* deezer_api_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B8E25BF71ED0076ACC3 /* deezer_api_appTests.swift */; };
+		8D327DA025C0AD6A005FF299 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D327D9F25C0AD6A005FF299 /* APIClient.swift */; };
+		8D327DA525C0B683005FF299 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D327DA425C0B683005FF299 /* APIClientTests.swift */; };
+		8D5D1E8725C1912E003989E2 /* DataTaskProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */; };
+		8D5D1E8D25C19180003989E2 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1E8C25C19180003989E2 /* APIError.swift */; };
+		8D5D1E9125C19197003989E2 /* DataTaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +38,12 @@
 		8D319B8325BF71ED0076ACC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D319B8525BF71ED0076ACC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D319B8A25BF71ED0076ACC3 /* deezer-api-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "deezer-api-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D319B8E25BF71ED0076ACC3 /* deezer_api_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deezer_api_appTests.swift; sourceTree = "<group>"; };
 		8D319B9025BF71ED0076ACC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D327D9F25C0AD6A005FF299 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		8D327DA425C0B683005FF299 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskProviderSpy.swift; sourceTree = "<group>"; };
+		8D5D1E8C25C19180003989E2 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +85,12 @@
 		8D319B7625BF71EB0076ACC3 /* deezer-api-app */ = {
 			isa = PBXGroup;
 			children = (
-				8D327D9725C0ACF1005FF299 /* Screens */,
 				8D327D9625C0ACE0005FF299 /* Application */,
-				8D327D9525C0ACDB005FF299 /* Networking */,
 				8D319B8025BF71ED0076ACC3 /* Assets.xcassets */,
-				8D319B8225BF71ED0076ACC3 /* LaunchScreen.storyboard */,
 				8D319B8525BF71ED0076ACC3 /* Info.plist */,
+				8D319B8225BF71ED0076ACC3 /* LaunchScreen.storyboard */,
+				8D327D9525C0ACDB005FF299 /* Networking */,
+				8D327D9725C0ACF1005FF299 /* Screens */,
 			);
 			path = "deezer-api-app";
 			sourceTree = "<group>";
@@ -90,7 +98,8 @@
 		8D319B8D25BF71ED0076ACC3 /* deezer-api-appTests */ = {
 			isa = PBXGroup;
 			children = (
-				8D319B8E25BF71ED0076ACC3 /* deezer_api_appTests.swift */,
+				8D5D1E8525C19117003989E2 /* Mocks */,
+				8D327DA325C0B671005FF299 /* Networking */,
 				8D319B9025BF71ED0076ACC3 /* Info.plist */,
 			);
 			path = "deezer-api-appTests";
@@ -99,6 +108,9 @@
 		8D327D9525C0ACDB005FF299 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				8D327D9F25C0AD6A005FF299 /* APIClient.swift */,
+				8D5D1E8C25C19180003989E2 /* APIError.swift */,
+				8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -118,6 +130,22 @@
 				8D319B7B25BF71EB0076ACC3 /* ViewController.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		8D327DA325C0B671005FF299 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8D327DA425C0B683005FF299 /* APIClientTests.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		8D5D1E8525C19117003989E2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +248,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D319B7C25BF71EB0076ACC3 /* ViewController.swift in Sources */,
+				8D5D1E9125C19197003989E2 /* DataTaskProvider.swift in Sources */,
 				8D319B7825BF71EB0076ACC3 /* AppDelegate.swift in Sources */,
 				8D319B7A25BF71EB0076ACC3 /* SceneDelegate.swift in Sources */,
+				8D5D1E8D25C19180003989E2 /* APIError.swift in Sources */,
+				8D327DA025C0AD6A005FF299 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +260,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D319B8F25BF71ED0076ACC3 /* deezer_api_appTests.swift in Sources */,
+				8D5D1E8725C1912E003989E2 /* DataTaskProviderSpy.swift in Sources */,
+				8D327DA525C0B683005FF299 /* APIClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
