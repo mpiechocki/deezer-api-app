@@ -7,8 +7,10 @@ class APIClient {
         self.dataTaskProvider = dataTaskProvider
     }
 
-    func perform() -> AnyPublisher<String, APIError> {
-        let url = URL(string: "https://api.deezer.com/search/artist?q=kygo")!
+    func perform(_ endpoint: APIEndpoint) -> AnyPublisher<SearchResult, APIError> {
+        guard let url = endpoint.url else {
+            return Fail<SearchResult, APIError>(error: APIError.urlError).eraseToAnyPublisher()
+        }
 
         return dataTaskProvider.taskPublisher(for: url)
             .tryMap { element in
@@ -17,8 +19,9 @@ class APIClient {
                     throw APIError.somethingWentWrong
                 }
 
-                return "response"
+                return element.data
             }
+            .decode(type: SearchResult.self, decoder: JSONDecoder())
             .mapError { _ in APIError.somethingWentWrong }
             .eraseToAnyPublisher()
     }
@@ -26,6 +29,5 @@ class APIClient {
     // MARK: - Private
 
     private let dataTaskProvider: DataTaskProvider
-    private var cancellables = Set<AnyCancellable>()
 
 }

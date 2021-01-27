@@ -11,12 +11,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-
-        apiClient.perform()
     }
-
-    let apiClient = APIClient(dataTaskProvider: URLSession.shared)
-
 
 }
 

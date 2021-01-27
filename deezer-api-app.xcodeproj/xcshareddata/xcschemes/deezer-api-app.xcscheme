@@ -26,7 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,16 +36,6 @@
                BlueprintIdentifier = "8D319B8925BF71ED0076ACC3"
                BuildableName = "deezer-api-appTests.xctest"
                BlueprintName = "deezer-api-appTests"
-               ReferencedContainer = "container:deezer-api-app.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8D319B9425BF71ED0076ACC3"
-               BuildableName = "deezer-api-appUITests.xctest"
-               BlueprintName = "deezer-api-appUITests"
                ReferencedContainer = "container:deezer-api-app.xcodeproj">
             </BuildableReference>
          </TestableReference>

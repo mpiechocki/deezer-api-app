@@ -1,0 +1,50 @@
+{
+    "data": [
+        {
+            "id": 169,
+            "name": "Fleetwood Mac",
+            "link": "http:\/\/www.deezer.com\/artist\/169",
+            "picture": "http:\/\/api.deezer.com\/artist\/169\/image",
+            "picture_small": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/ef23278cf3a67a3ca8404ddaa38699d4\/56x56-000000-80-0-0.jpg",
+            "picture_medium": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/ef23278cf3a67a3ca8404ddaa38699d4\/250x250-000000-80-0-0.jpg",
+            "picture_big": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/ef23278cf3a67a3ca8404ddaa38699d4\/500x500-000000-80-0-0.jpg",
+            "picture_xl": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/ef23278cf3a67a3ca8404ddaa38699d4\/1000x1000-000000-80-0-0.jpg",
+            "nb_album": 60,
+            "nb_fan": 921936,
+            "radio": true,
+            "tracklist": "http:\/\/api.deezer.com\/artist\/169\/top?limit=50",
+            "type": "artist"
+        },
+        {
+            "id": 67268272,
+            "name": "Peter Green's Fleetwood Mac",
+            "link": "http:\/\/www.deezer.com\/artist\/67268272",
+            "picture": "http:\/\/api.deezer.com\/artist\/67268272\/image",
+            "picture_small": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/b74ed85d87a31d16c7468a9829f624cc\/56x56-000000-80-0-0.jpg",
+            "picture_medium": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/b74ed85d87a31d16c7468a9829f624cc\/250x250-000000-80-0-0.jpg",
+            "picture_big": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/b74ed85d87a31d16c7468a9829f624cc\/500x500-000000-80-0-0.jpg",
+            "picture_xl": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/b74ed85d87a31d16c7468a9829f624cc\/1000x1000-000000-80-0-0.jpg",
+            "nb_album": 3,
+            "nb_fan": 180,
+            "radio": false,
+            "tracklist": "http:\/\/api.deezer.com\/artist\/67268272\/top?limit=50",
+            "type": "artist"
+        },
+        {
+            "id": 5862296,
+            "name": "Fleetwood Mac & The Christine Perfect Band",
+            "link": "http:\/\/www.deezer.com\/artist\/5862296",
+            "picture": "http:\/\/api.deezer.com\/artist\/5862296\/image",
+            "picture_small": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/69c8ac9921c6b2755cfa36aa31f7c4a1\/56x56-000000-80-0-0.jpg",
+            "picture_medium": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/69c8ac9921c6b2755cfa36aa31f7c4a1\/250x250-000000-80-0-0.jpg",
+            "picture_big": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/69c8ac9921c6b2755cfa36aa31f7c4a1\/500x500-000000-80-0-0.jpg",
+            "picture_xl": "http:\/\/e-cdn-images.deezer.com\/images\/artist\/69c8ac9921c6b2755cfa36aa31f7c4a1\/1000x1000-000000-80-0-0.jpg",
+            "nb_album": 1,
+            "nb_fan": 177,
+            "radio": false,
+            "tracklist": "http:\/\/api.deezer.com\/artist\/5862296\/top?limit=50",
+            "type": "artist"
+        }
+    ],
+    "total": 3
+}

@@ -17,6 +17,11 @@
 		8D5D1E8725C1912E003989E2 /* DataTaskProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */; };
 		8D5D1E8D25C19180003989E2 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1E8C25C19180003989E2 /* APIError.swift */; };
 		8D5D1E9125C19197003989E2 /* DataTaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */; };
+		8DF62E2D25C1CB1500A20FE3 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF62E2C25C1CB1500A20FE3 /* APIEndpoint.swift */; };
+		8DF62E3225C1CE1700A20FE3 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF62E3125C1CE1700A20FE3 /* SearchResult.swift */; };
+		8DF62E3825C1CFAA00A20FE3 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF62E3725C1CFAA00A20FE3 /* Artist.swift */; };
+		8DF62E3D25C1D09900A20FE3 /* search_result.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DF62E3C25C1D09900A20FE3 /* search_result.json */; };
+		8DF62E4325C1D85100A20FE3 /* broken_search_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DF62E4225C1D85100A20FE3 /* broken_search_results.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskProviderSpy.swift; sourceTree = "<group>"; };
 		8D5D1E8C25C19180003989E2 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskProvider.swift; sourceTree = "<group>"; };
+		8DF62E2C25C1CB1500A20FE3 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		8DF62E3125C1CE1700A20FE3 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		8DF62E3725C1CFAA00A20FE3 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		8DF62E3C25C1D09900A20FE3 /* search_result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = search_result.json; sourceTree = "<group>"; };
+		8DF62E4225C1D85100A20FE3 /* broken_search_results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = broken_search_results.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +99,7 @@
 				8D319B8025BF71ED0076ACC3 /* Assets.xcassets */,
 				8D319B8525BF71ED0076ACC3 /* Info.plist */,
 				8D319B8225BF71ED0076ACC3 /* LaunchScreen.storyboard */,
+				8DF62E3025C1CE0600A20FE3 /* Model */,
 				8D327D9525C0ACDB005FF299 /* Networking */,
 				8D327D9725C0ACF1005FF299 /* Screens */,
 			);
@@ -98,6 +109,7 @@
 		8D319B8D25BF71ED0076ACC3 /* deezer-api-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				8DF62E3B25C1D08900A20FE3 /* JSONs */,
 				8D5D1E8525C19117003989E2 /* Mocks */,
 				8D327DA325C0B671005FF299 /* Networking */,
 				8D319B9025BF71ED0076ACC3 /* Info.plist */,
@@ -111,6 +123,7 @@
 				8D327D9F25C0AD6A005FF299 /* APIClient.swift */,
 				8D5D1E8C25C19180003989E2 /* APIError.swift */,
 				8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */,
+				8DF62E2C25C1CB1500A20FE3 /* APIEndpoint.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -146,6 +159,24 @@
 				8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		8DF62E3025C1CE0600A20FE3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DF62E3125C1CE1700A20FE3 /* SearchResult.swift */,
+				8DF62E3725C1CFAA00A20FE3 /* Artist.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DF62E3B25C1D08900A20FE3 /* JSONs */ = {
+			isa = PBXGroup;
+			children = (
+				8DF62E3C25C1D09900A20FE3 /* search_result.json */,
+				8DF62E4225C1D85100A20FE3 /* broken_search_results.json */,
+			);
+			path = JSONs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +268,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DF62E3D25C1D09900A20FE3 /* search_result.json in Resources */,
+				8DF62E4325C1D85100A20FE3 /* broken_search_results.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DF62E2D25C1CB1500A20FE3 /* APIEndpoint.swift in Sources */,
 				8D319B7C25BF71EB0076ACC3 /* ViewController.swift in Sources */,
+				8DF62E3225C1CE1700A20FE3 /* SearchResult.swift in Sources */,
+				8DF62E3825C1CFAA00A20FE3 /* Artist.swift in Sources */,
 				8D5D1E9125C19197003989E2 /* DataTaskProvider.swift in Sources */,
 				8D319B7825BF71EB0076ACC3 /* AppDelegate.swift in Sources */,
 				8D319B7A25BF71EB0076ACC3 /* SceneDelegate.swift in Sources */,
