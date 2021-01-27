@@ -10,8 +10,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = scene as? UIWindowScene else { return }
 
+        let apiClient = APIClient(dataTaskProvider: URLSession.shared)
+        let deezerService = DeezerService(apiClient: apiClient)
+
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = SearchViewController(apiClient: APIClient(dataTaskProvider: URLSession.shared))
+        window?.rootViewController = SearchViewController(deezerService: deezerService)
         window?.makeKeyAndVisible()
     }
 

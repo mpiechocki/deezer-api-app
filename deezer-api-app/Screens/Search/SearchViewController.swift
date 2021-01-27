@@ -3,8 +3,8 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
 
-    init(apiClient: APIClient) {
-        self.apiClient = apiClient
+    init(deezerService: DeezerServiceProtocol) {
+        self.deezerService = deezerService
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -52,7 +52,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
 
     // MARK: - Private
 
-    private let apiClient: APIClient
+    private let deezerService: DeezerServiceProtocol
     private let searchTextSubject = PassthroughSubject<String, Never>()
     private var cancellables = Set<AnyCancellable>()
 
@@ -69,11 +69,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
 
     private func setupBindings() {
         searchTextSubject
-            .flatMap(maxPublishers: .max(1)) { [apiClient] query in
-                apiClient.perform(.search(query: query))
+            .throttle(for: 1, scheduler: DispatchQueue.main, latest: true)
+            .flatMap(maxPublishers: .max(1)) { [deezerService] query in
+                deezerService.search(query: query)
             }
             .receive(on: DispatchQueue.main)
-            .map { $0.data }
             .sink(
                 receiveCompletion: { print($0) },
                 receiveValue: { [weak self] in self?.artists = $0 }

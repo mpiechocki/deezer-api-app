@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-class APIClient {
+class APIClient: APIClientProtocol {
 
     init(dataTaskProvider: DataTaskProvider) {
         self.dataTaskProvider = dataTaskProvider

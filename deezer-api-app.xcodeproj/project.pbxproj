@@ -17,6 +17,11 @@
 		8D5D1E8725C1912E003989E2 /* DataTaskProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */; };
 		8D5D1E8D25C19180003989E2 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1E8C25C19180003989E2 /* APIError.swift */; };
 		8D5D1E9125C19197003989E2 /* DataTaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */; };
+		8DABAE0625C1FC13000F1E62 /* APIClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE0525C1FC13000F1E62 /* APIClientProtocol.swift */; };
+		8DABAE0E25C1FC84000F1E62 /* DeezerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE0D25C1FC84000F1E62 /* DeezerService.swift */; };
+		8DABAE1425C1FE71000F1E62 /* DeezerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE1325C1FE71000F1E62 /* DeezerServiceTests.swift */; };
+		8DABAE1A25C201CC000F1E62 /* DeezerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE1925C201CC000F1E62 /* DeezerServiceProtocol.swift */; };
+		8DABAE1E25C201EE000F1E62 /* APIClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABAE1D25C201EE000F1E62 /* APIClientSpy.swift */; };
 		8DF62E2D25C1CB1500A20FE3 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF62E2C25C1CB1500A20FE3 /* APIEndpoint.swift */; };
 		8DF62E3225C1CE1700A20FE3 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF62E3125C1CE1700A20FE3 /* SearchResult.swift */; };
 		8DF62E3825C1CFAA00A20FE3 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF62E3725C1CFAA00A20FE3 /* Artist.swift */; };
@@ -50,6 +55,11 @@
 		8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskProviderSpy.swift; sourceTree = "<group>"; };
 		8D5D1E8C25C19180003989E2 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskProvider.swift; sourceTree = "<group>"; };
+		8DABAE0525C1FC13000F1E62 /* APIClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientProtocol.swift; sourceTree = "<group>"; };
+		8DABAE0D25C1FC84000F1E62 /* DeezerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeezerService.swift; sourceTree = "<group>"; };
+		8DABAE1325C1FE71000F1E62 /* DeezerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeezerServiceTests.swift; sourceTree = "<group>"; };
+		8DABAE1925C201CC000F1E62 /* DeezerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeezerServiceProtocol.swift; sourceTree = "<group>"; };
+		8DABAE1D25C201EE000F1E62 /* APIClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientSpy.swift; sourceTree = "<group>"; };
 		8DF62E2C25C1CB1500A20FE3 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		8DF62E3125C1CE1700A20FE3 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		8DF62E3725C1CFAA00A20FE3 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
@@ -111,10 +121,11 @@
 		8D319B8D25BF71ED0076ACC3 /* deezer-api-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				8D319B9025BF71ED0076ACC3 /* Info.plist */,
 				8DF62E3B25C1D08900A20FE3 /* JSONs */,
 				8D5D1E8525C19117003989E2 /* Mocks */,
 				8D327DA325C0B671005FF299 /* Networking */,
-				8D319B9025BF71ED0076ACC3 /* Info.plist */,
+				8DABADFE25C1FB61000F1E62 /* Screens */,
 			);
 			path = "deezer-api-appTests";
 			sourceTree = "<group>";
@@ -122,10 +133,8 @@
 		8D327D9525C0ACDB005FF299 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				8D327D9F25C0AD6A005FF299 /* APIClient.swift */,
-				8D5D1E8C25C19180003989E2 /* APIError.swift */,
-				8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */,
-				8DF62E2C25C1CB1500A20FE3 /* APIEndpoint.swift */,
+				8DABAE0C25C1FC6C000F1E62 /* DeezerService */,
+				8DABAE0B25C1FC63000F1E62 /* APIClient */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -150,7 +159,8 @@
 		8D327DA325C0B671005FF299 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				8D327DA425C0B683005FF299 /* APIClientTests.swift */,
+				8DABAE1225C1FE61000F1E62 /* DeezerService */,
+				8DABAE1125C1FE57000F1E62 /* APIClient */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -159,8 +169,53 @@
 			isa = PBXGroup;
 			children = (
 				8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */,
+				8DABAE1D25C201EE000F1E62 /* APIClientSpy.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		8DABADFE25C1FB61000F1E62 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		8DABAE0B25C1FC63000F1E62 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				8D327D9F25C0AD6A005FF299 /* APIClient.swift */,
+				8DABAE0525C1FC13000F1E62 /* APIClientProtocol.swift */,
+				8DF62E2C25C1CB1500A20FE3 /* APIEndpoint.swift */,
+				8D5D1E8C25C19180003989E2 /* APIError.swift */,
+				8D5D1E9025C19197003989E2 /* DataTaskProvider.swift */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		8DABAE0C25C1FC6C000F1E62 /* DeezerService */ = {
+			isa = PBXGroup;
+			children = (
+				8DABAE0D25C1FC84000F1E62 /* DeezerService.swift */,
+				8DABAE1925C201CC000F1E62 /* DeezerServiceProtocol.swift */,
+			);
+			path = DeezerService;
+			sourceTree = "<group>";
+		};
+		8DABAE1125C1FE57000F1E62 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				8D327DA425C0B683005FF299 /* APIClientTests.swift */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		8DABAE1225C1FE61000F1E62 /* DeezerService */ = {
+			isa = PBXGroup;
+			children = (
+				8DABAE1325C1FE71000F1E62 /* DeezerServiceTests.swift */,
+			);
+			path = DeezerService;
 			sourceTree = "<group>";
 		};
 		8DF62E3025C1CE0600A20FE3 /* Model */ = {
@@ -293,12 +348,15 @@
 			files = (
 				8DF62E4C25C1DBB000A20FE3 /* SearchView.swift in Sources */,
 				8DF62E2D25C1CB1500A20FE3 /* APIEndpoint.swift in Sources */,
+				8DABAE0E25C1FC84000F1E62 /* DeezerService.swift in Sources */,
 				8D319B7C25BF71EB0076ACC3 /* SearchViewController.swift in Sources */,
 				8DF62E3225C1CE1700A20FE3 /* SearchResult.swift in Sources */,
 				8DF62E3825C1CFAA00A20FE3 /* Artist.swift in Sources */,
 				8D5D1E9125C19197003989E2 /* DataTaskProvider.swift in Sources */,
 				8D319B7825BF71EB0076ACC3 /* AppDelegate.swift in Sources */,
+				8DABAE0625C1FC13000F1E62 /* APIClientProtocol.swift in Sources */,
 				8D319B7A25BF71EB0076ACC3 /* SceneDelegate.swift in Sources */,
+				8DABAE1A25C201CC000F1E62 /* DeezerServiceProtocol.swift in Sources */,
 				8D5D1E8D25C19180003989E2 /* APIError.swift in Sources */,
 				8D327DA025C0AD6A005FF299 /* APIClient.swift in Sources */,
 			);
@@ -310,6 +368,8 @@
 			files = (
 				8D5D1E8725C1912E003989E2 /* DataTaskProviderSpy.swift in Sources */,
 				8D327DA525C0B683005FF299 /* APIClientTests.swift in Sources */,
+				8DABAE1E25C201EE000F1E62 /* APIClientSpy.swift in Sources */,
+				8DABAE1425C1FE71000F1E62 /* DeezerServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

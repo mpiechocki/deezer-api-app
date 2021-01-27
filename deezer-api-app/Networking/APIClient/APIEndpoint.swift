@@ -1,6 +1,6 @@
 import Foundation
 
-enum APIEndpoint {
+enum APIEndpoint: Equatable {
     case search(query: String)
     case artist
 }
