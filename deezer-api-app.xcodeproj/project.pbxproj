@@ -173,8 +173,8 @@
 		8D5D1E8525C19117003989E2 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */,
 				8DABAE1D25C201EE000F1E62 /* APIClientSpy.swift */,
+				8D5D1E8625C1912E003989E2 /* DataTaskProviderSpy.swift */,
 				8DABAE2A25C20DA7000F1E62 /* DeezerServiceSpy.swift */,
 			);
 			path = Mocks;
@@ -243,8 +243,8 @@
 		8DF62E3025C1CE0600A20FE3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8DF62E3125C1CE1700A20FE3 /* SearchResult.swift */,
 				8DF62E3725C1CFAA00A20FE3 /* Artist.swift */,
+				8DF62E3125C1CE1700A20FE3 /* SearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,8 +252,8 @@
 		8DF62E3B25C1D08900A20FE3 /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
-				8DF62E3C25C1D09900A20FE3 /* search_result.json */,
 				8DF62E4225C1D85100A20FE3 /* broken_search_results.json */,
+				8DF62E3C25C1D09900A20FE3 /* search_result.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
