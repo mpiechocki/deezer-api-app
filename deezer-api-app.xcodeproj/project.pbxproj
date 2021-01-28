@@ -44,6 +44,7 @@
 		8DFDAF1D25C332C10027AFB7 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF1C25C332C10027AFB7 /* ControllerFactory.swift */; };
 		8DFDAF2125C333270027AFB7 /* ControllerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF2025C333270027AFB7 /* ControllerFactoryTests.swift */; };
 		8DFDAF2725C335170027AFB7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF2625C335170027AFB7 /* Environment.swift */; };
+		8DFDAF2B25C33A450027AFB7 /* NavigationSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF2A25C33A450027AFB7 /* NavigationSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		8DFDAF1C25C332C10027AFB7 /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
 		8DFDAF2025C333270027AFB7 /* ControllerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactoryTests.swift; sourceTree = "<group>"; };
 		8DFDAF2625C335170027AFB7 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		8DFDAF2A25C33A450027AFB7 /* NavigationSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				8DABAE2A25C20DA7000F1E62 /* DeezerServiceSpy.swift */,
 				8DFDAF1425C331E30027AFB7 /* ControllerFactorySpy.swift */,
 				8DFDAF1825C332440027AFB7 /* NavigationControllerSpy.swift */,
+				8DFDAF2A25C33A450027AFB7 /* NavigationSpy.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 			files = (
 				8D5D1E8725C1912E003989E2 /* DataTaskProviderSpy.swift in Sources */,
 				8DABAE2525C202DA000F1E62 /* SearchViewControllerTests.swift in Sources */,
+				8DFDAF2B25C33A450027AFB7 /* NavigationSpy.swift in Sources */,
 				8DFDAF0425C32E7A0027AFB7 /* NavigationTests.swift in Sources */,
 				8D327DA525C0B683005FF299 /* APIClientTests.swift in Sources */,
 				8DFDAF2125C333270027AFB7 /* ControllerFactoryTests.swift in Sources */,

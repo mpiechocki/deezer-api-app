@@ -1,7 +1,7 @@
 import Combine
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     init(deezerService: DeezerServiceProtocol) {
         self.deezerService = deezerService
@@ -44,6 +44,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         return cell
     }
 
+    // MARK: - UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Environment.navigation.go(to: .albums)
+    }
+
     // MARK: - UISearchBarDelegate
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -63,6 +69,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
 
     private func configureTableView() {
         searchView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        searchView.tableView.delegate = self
         searchView.tableView.dataSource = self
         searchView.tableView.tableFooterView = UIView()
     }

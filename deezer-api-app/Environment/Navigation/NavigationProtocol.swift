@@ -1,7 +1,7 @@
 import UIKit
 
 protocol NavigationProtocol {
-    var navigationController: UINavigationController { get set }
+    var navigationController: UINavigationController { get }
 
     func go(to: Route)
 }

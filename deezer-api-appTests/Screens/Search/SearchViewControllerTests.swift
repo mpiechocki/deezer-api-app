@@ -5,11 +5,17 @@ import XCTest
 
 class SearchViewControllerTest: XCTestCase {
 
+    var savedNavigation: NavigationProtocol!
+    var navigationSpy: NavigationSpy!
     var deezerServiceSpy: DeezerServiceSpy!
     var sut: SearchViewController!
 
     override func setUp() {
         super.setUp()
+        navigationSpy = NavigationSpy()
+        savedNavigation = Environment.navigation
+        Environment.navigation = navigationSpy
+
         deezerServiceSpy = DeezerServiceSpy()
         sut = SearchViewController(deezerService: deezerServiceSpy)
     }
@@ -17,6 +23,9 @@ class SearchViewControllerTest: XCTestCase {
     override func tearDown() {
         sut = nil
         deezerServiceSpy = nil
+        navigationSpy = nil
+
+        Environment.navigation = savedNavigation
         super.tearDown()
     }
 
@@ -37,6 +46,7 @@ class SearchViewControllerTest: XCTestCase {
         sut.loadViewIfNeeded()
 
         XCTAssertTrue(sut.searchView.tableView.dataSource === sut)
+        XCTAssertTrue(sut.searchView.tableView.delegate === sut)
         XCTAssertNotNil(sut.searchView.tableView.tableFooterView)
 
         let tableView = sut.searchView.tableView
@@ -63,6 +73,10 @@ class SearchViewControllerTest: XCTestCase {
 
         XCTAssertEqual(cell2.textLabel?.text, "Albatross")
         XCTAssertEqual(cell3.textLabel?.text, "Machine Head")
+
+        sut.tableView(tableView, didSelectRowAt: IndexPath(row: 1, section: 0))
+        XCTAssertEqual(navigationSpy.goCalledWith.count, 1)
+        XCTAssertEqual(navigationSpy.goCalledWith.first, .albums)
     }
 
     func test_search_success() {
