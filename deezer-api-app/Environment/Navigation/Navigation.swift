@@ -8,6 +8,8 @@ class Navigation: NavigationProtocol {
         self.controllerFactory = controllerFactory
     }
 
+    var navigationController: UINavigationController
+
     // MARK: - NavigationProtocol
 
     func go(to route: Route) {
@@ -17,7 +19,6 @@ class Navigation: NavigationProtocol {
 
     // MARK: - Private
 
-    private let navigationController: UINavigationController
     private let controllerFactory: ControllerFactoring
 
 }

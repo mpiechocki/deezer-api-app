@@ -34,7 +34,6 @@
 		8DFDAEDC25C327820027AFB7 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAEDB25C327820027AFB7 /* Album.swift */; };
 		8DFDAEE025C32A200027AFB7 /* albums_result.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DFDAEDF25C32A200027AFB7 /* albums_result.json */; };
 		8DFDAEE725C32BFC0027AFB7 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAEE625C32BFC0027AFB7 /* AlbumsViewController.swift */; };
-		8DFDAEED25C32C560027AFB7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAEEC25C32C560027AFB7 /* Environment.swift */; };
 		8DFDAEF325C32C9C0027AFB7 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAEF225C32C9C0027AFB7 /* Navigation.swift */; };
 		8DFDAEFA25C32CD70027AFB7 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAEF925C32CD70027AFB7 /* Route.swift */; };
 		8DFDAF0425C32E7A0027AFB7 /* NavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF0325C32E7A0027AFB7 /* NavigationTests.swift */; };
@@ -44,6 +43,7 @@
 		8DFDAF1925C332440027AFB7 /* NavigationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF1825C332440027AFB7 /* NavigationControllerSpy.swift */; };
 		8DFDAF1D25C332C10027AFB7 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF1C25C332C10027AFB7 /* ControllerFactory.swift */; };
 		8DFDAF2125C333270027AFB7 /* ControllerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF2025C333270027AFB7 /* ControllerFactoryTests.swift */; };
+		8DFDAF2725C335170027AFB7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF2625C335170027AFB7 /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,6 @@
 		8DFDAEDB25C327820027AFB7 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		8DFDAEDF25C32A200027AFB7 /* albums_result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = albums_result.json; sourceTree = "<group>"; };
 		8DFDAEE625C32BFC0027AFB7 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
-		8DFDAEEC25C32C560027AFB7 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		8DFDAEF225C32C9C0027AFB7 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		8DFDAEF925C32CD70027AFB7 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		8DFDAF0325C32E7A0027AFB7 /* NavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTests.swift; sourceTree = "<group>"; };
@@ -98,6 +97,7 @@
 		8DFDAF1825C332440027AFB7 /* NavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerSpy.swift; sourceTree = "<group>"; };
 		8DFDAF1C25C332C10027AFB7 /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
 		8DFDAF2025C333270027AFB7 /* ControllerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactoryTests.swift; sourceTree = "<group>"; };
+		8DFDAF2625C335170027AFB7 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,7 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				8DFDAEF825C32CCD0027AFB7 /* Navigation */,
-				8DFDAEEC25C32C560027AFB7 /* Environment.swift */,
+				8DFDAF2625C335170027AFB7 /* Environment.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -450,6 +450,7 @@
 				8DABAE0E25C1FC84000F1E62 /* DeezerService.swift in Sources */,
 				8D319B7C25BF71EB0076ACC3 /* SearchViewController.swift in Sources */,
 				8DF62E3225C1CE1700A20FE3 /* SearchResult.swift in Sources */,
+				8DFDAF2725C335170027AFB7 /* Environment.swift in Sources */,
 				8DF62E3825C1CFAA00A20FE3 /* Artist.swift in Sources */,
 				8D5D1E9125C19197003989E2 /* DataTaskProvider.swift in Sources */,
 				8D319B7825BF71EB0076ACC3 /* AppDelegate.swift in Sources */,
@@ -463,7 +464,6 @@
 				8D327DA025C0AD6A005FF299 /* APIClient.swift in Sources */,
 				8DFDAEF325C32C9C0027AFB7 /* Navigation.swift in Sources */,
 				8DFDAEDC25C327820027AFB7 /* Album.swift in Sources */,
-				8DFDAEED25C32C560027AFB7 /* Environment.swift in Sources */,
 				8DFDAEFA25C32CD70027AFB7 /* Route.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
