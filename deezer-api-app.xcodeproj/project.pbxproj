@@ -315,11 +315,11 @@
 		8DFDAEF825C32CCD0027AFB7 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				8DFDAEF225C32C9C0027AFB7 /* Navigation.swift */,
-				8DFDAEF925C32CD70027AFB7 /* Route.swift */,
 				8DFDAF0A25C32E910027AFB7 /* ControllerFactoring.swift */,
-				8DFDAF0E25C32EAA0027AFB7 /* NavigationProtocol.swift */,
 				8DFDAF1C25C332C10027AFB7 /* ControllerFactory.swift */,
+				8DFDAEF225C32C9C0027AFB7 /* Navigation.swift */,
+				8DFDAF0E25C32EAA0027AFB7 /* NavigationProtocol.swift */,
+				8DFDAEF925C32CD70027AFB7 /* Route.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -335,8 +335,8 @@
 		8DFDAF0225C32E6E0027AFB7 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				8DFDAF0325C32E7A0027AFB7 /* NavigationTests.swift */,
 				8DFDAF2025C333270027AFB7 /* ControllerFactoryTests.swift */,
+				8DFDAF0325C32E7A0027AFB7 /* NavigationTests.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
