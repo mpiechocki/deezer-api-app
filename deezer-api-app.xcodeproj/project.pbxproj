@@ -42,6 +42,8 @@
 		8DFDAF0F25C32EAA0027AFB7 /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF0E25C32EAA0027AFB7 /* NavigationProtocol.swift */; };
 		8DFDAF1525C331E30027AFB7 /* ControllerFactorySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF1425C331E30027AFB7 /* ControllerFactorySpy.swift */; };
 		8DFDAF1925C332440027AFB7 /* NavigationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF1825C332440027AFB7 /* NavigationControllerSpy.swift */; };
+		8DFDAF1D25C332C10027AFB7 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF1C25C332C10027AFB7 /* ControllerFactory.swift */; };
+		8DFDAF2125C333270027AFB7 /* ControllerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAF2025C333270027AFB7 /* ControllerFactoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		8DFDAF0E25C32EAA0027AFB7 /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
 		8DFDAF1425C331E30027AFB7 /* ControllerFactorySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactorySpy.swift; sourceTree = "<group>"; };
 		8DFDAF1825C332440027AFB7 /* NavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerSpy.swift; sourceTree = "<group>"; };
+		8DFDAF1C25C332C10027AFB7 /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
+		8DFDAF2025C333270027AFB7 /* ControllerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +319,7 @@
 				8DFDAEF925C32CD70027AFB7 /* Route.swift */,
 				8DFDAF0A25C32E910027AFB7 /* ControllerFactoring.swift */,
 				8DFDAF0E25C32EAA0027AFB7 /* NavigationProtocol.swift */,
+				8DFDAF1C25C332C10027AFB7 /* ControllerFactory.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				8DFDAF0325C32E7A0027AFB7 /* NavigationTests.swift */,
+				8DFDAF2025C333270027AFB7 /* ControllerFactoryTests.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -449,6 +455,7 @@
 				8D319B7825BF71EB0076ACC3 /* AppDelegate.swift in Sources */,
 				8DFDAEE725C32BFC0027AFB7 /* AlbumsViewController.swift in Sources */,
 				8DFDAED825C327780027AFB7 /* AlbumsResult.swift in Sources */,
+				8DFDAF1D25C332C10027AFB7 /* ControllerFactory.swift in Sources */,
 				8DABAE0625C1FC13000F1E62 /* APIClientProtocol.swift in Sources */,
 				8D319B7A25BF71EB0076ACC3 /* SceneDelegate.swift in Sources */,
 				8DABAE1A25C201CC000F1E62 /* DeezerServiceProtocol.swift in Sources */,
@@ -469,6 +476,7 @@
 				8DABAE2525C202DA000F1E62 /* SearchViewControllerTests.swift in Sources */,
 				8DFDAF0425C32E7A0027AFB7 /* NavigationTests.swift in Sources */,
 				8D327DA525C0B683005FF299 /* APIClientTests.swift in Sources */,
+				8DFDAF2125C333270027AFB7 /* ControllerFactoryTests.swift in Sources */,
 				8DABAE2B25C20DA7000F1E62 /* DeezerServiceSpy.swift in Sources */,
 				8DFDAF1525C331E30027AFB7 /* ControllerFactorySpy.swift in Sources */,
 				8DFDAF1925C332440027AFB7 /* NavigationControllerSpy.swift in Sources */,
