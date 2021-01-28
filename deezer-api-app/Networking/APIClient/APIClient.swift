@@ -7,9 +7,9 @@ class APIClient: APIClientProtocol {
         self.dataTaskProvider = dataTaskProvider
     }
 
-    func perform(_ endpoint: APIEndpoint) -> AnyPublisher<SearchResult, APIError> {
+    func perform<T: Decodable>(_ endpoint: APIEndpoint) -> AnyPublisher<T, APIError> {
         guard let url = endpoint.url else {
-            return Fail<SearchResult, APIError>(error: APIError.somethingWentWrong).eraseToAnyPublisher()
+            return Fail<T, APIError>(error: APIError.somethingWentWrong).eraseToAnyPublisher()
         }
 
         return dataTaskProvider.taskPublisher(for: url)
@@ -21,7 +21,7 @@ class APIClient: APIClientProtocol {
 
                 return element.data
             }
-            .decode(type: SearchResult.self, decoder: JSONDecoder())
+            .decode(type: T.self, decoder: JSONDecoder())
             .mapError { _ in APIError.somethingWentWrong }
             .eraseToAnyPublisher()
     }

@@ -2,7 +2,7 @@ import Foundation
 
 enum APIEndpoint: Equatable {
     case search(query: String)
-    case artist
+    case albums(artistId: Int)
 }
 
 extension APIEndpoint {
@@ -12,8 +12,8 @@ extension APIEndpoint {
         switch self {
         case .search:
             path = "/search/artist"
-        case .artist:
-            path = "/artist"
+        case .albums(let id):
+            path = "/artist/\(id)/albums"
         }
 
         return path
@@ -25,7 +25,7 @@ extension APIEndpoint {
         switch self {
         case .search(let query):
             queryItems = [URLQueryItem(name: "q", value: query)]
-        case .artist:
+        case .albums:
             queryItems = nil
         }
 

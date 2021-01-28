@@ -1,0 +1,60 @@
+{
+    "data": [
+        {
+            "id": 194219042,
+            "title": "Music To Be Murdered By - Side B (Deluxe Edition)",
+            "link": "http:\/\/www.deezer.com\/album\/194219042",
+            "cover": "http:\/\/api.deezer.com\/album\/194219042\/image",
+            "cover_small": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/55d424a53904d145b17869ba133843d7\/56x56-000000-80-0-0.jpg",
+            "cover_medium": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/55d424a53904d145b17869ba133843d7\/250x250-000000-80-0-0.jpg",
+            "cover_big": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/55d424a53904d145b17869ba133843d7\/500x500-000000-80-0-0.jpg",
+            "cover_xl": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/55d424a53904d145b17869ba133843d7\/1000x1000-000000-80-0-0.jpg",
+            "md5_image": "55d424a53904d145b17869ba133843d7",
+            "genre_id": 116,
+            "fans": 17208,
+            "release_date": "2020-12-18",
+            "record_type": "album",
+            "tracklist": "http:\/\/api.deezer.com\/album\/194219042\/tracks",
+            "explicit_lyrics": true,
+            "type": "album"
+        },
+        {
+            "id": 127270232,
+            "title": "Music To Be Murdered By",
+            "link": "http:\/\/www.deezer.com\/album\/127270232",
+            "cover": "http:\/\/api.deezer.com\/album\/127270232\/image",
+            "cover_small": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/4d00a7848dc8af475973ff1761ad828d\/56x56-000000-80-0-0.jpg",
+            "cover_medium": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/4d00a7848dc8af475973ff1761ad828d\/250x250-000000-80-0-0.jpg",
+            "cover_big": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/4d00a7848dc8af475973ff1761ad828d\/500x500-000000-80-0-0.jpg",
+            "cover_xl": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/4d00a7848dc8af475973ff1761ad828d\/1000x1000-000000-80-0-0.jpg",
+            "md5_image": "4d00a7848dc8af475973ff1761ad828d",
+            "genre_id": 116,
+            "fans": 206223,
+            "release_date": "2020-01-17",
+            "record_type": "album",
+            "tracklist": "http:\/\/api.deezer.com\/album\/127270232\/tracks",
+            "explicit_lyrics": true,
+            "type": "album"
+        },
+        {
+            "id": 72000342,
+            "title": "Kamikaze",
+            "link": "http:\/\/www.deezer.com\/album\/72000342",
+            "cover": "http:\/\/api.deezer.com\/album\/72000342\/image",
+            "cover_small": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/bf74fc764097630ba58782ae79cfbee6\/56x56-000000-80-0-0.jpg",
+            "cover_medium": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/bf74fc764097630ba58782ae79cfbee6\/250x250-000000-80-0-0.jpg",
+            "cover_big": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/bf74fc764097630ba58782ae79cfbee6\/500x500-000000-80-0-0.jpg",
+            "cover_xl": "http:\/\/e-cdn-images.deezer.com\/images\/cover\/bf74fc764097630ba58782ae79cfbee6\/1000x1000-000000-80-0-0.jpg",
+            "md5_image": "bf74fc764097630ba58782ae79cfbee6",
+            "genre_id": 116,
+            "fans": 318786,
+            "release_date": "2018-08-31",
+            "record_type": "album",
+            "tracklist": "http:\/\/api.deezer.com\/album\/72000342\/tracks",
+            "explicit_lyrics": true,
+            "type": "album"
+        }
+    ],
+    "total": 3,
+    "next": "http:\/\/api.deezer.com\/artist\/13\/albums?index=25"
+}

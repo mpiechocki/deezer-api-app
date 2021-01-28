@@ -21,7 +21,7 @@ class APIClientTests: XCTestCase {
         cancellables = nil
     }
 
-    func test_perform_url_success() throws {
+    func test_perform_search_success() throws {
         var caughtSearchResult: SearchResult?
 
         sut.perform(.search(query: "someartist"))
@@ -53,7 +53,7 @@ class APIClientTests: XCTestCase {
         let actualArtistsNames = caughtSearchResult?.data.map { $0.name }
         XCTAssertEqual(actualArtistsNames, expectedArtistsNames)
 
-        let expectedIds = [169, 67268272, 5862296]
+        let expectedIds: [UInt] = [169, 67268272, 5862296]
         let actualIds = caughtSearchResult?.data.map { $0.id }
         XCTAssertEqual(actualIds, expectedIds)
     }
@@ -68,7 +68,7 @@ class APIClientTests: XCTestCase {
                         caughtError = error
                     }
                 },
-                receiveValue: { _ in }
+                receiveValue: { (_: AlbumsResult) -> Void in }
             )
             .store(in: &cancellables)
 
@@ -85,21 +85,21 @@ class APIClientTests: XCTestCase {
     func test_perform_url_failure() {
         var caughtError: Error?
 
-        sut.perform(.artist)
+        sut.perform(.albums(artistId: 0))
             .sink(
                 receiveCompletion: {
                     if case .failure(let error) = $0 {
                         caughtError = error
                     }
                 },
-                receiveValue: { _ in }
+                receiveValue: { (_: AlbumsResult) -> Void in }
             )
             .store(in: &cancellables)
 
         XCTAssertEqual(dataTaskProviderSpy.dataTaskPublisherCalledWith.count, 1)
 
         let urlString = dataTaskProviderSpy.dataTaskPublisherCalledWith.first?.absoluteString
-        XCTAssertEqual(urlString, "https://api.deezer.com/artist")
+        XCTAssertEqual(urlString, "https://api.deezer.com/artist/0/albums")
 
         let response = HTTPURLResponse.forbidden
         dataTaskProviderSpy.stubbedTaskSubject.send((data: Data(), response: response))
@@ -109,24 +109,56 @@ class APIClientTests: XCTestCase {
     func test_perform_session_failure() {
         var caughtError: Error?
 
-        sut.perform(.artist)
+        sut.perform(.albums(artistId: 0))
             .sink(
                 receiveCompletion: {
                     if case .failure(let error) = $0 {
                         caughtError = error
                     }
                 },
-                receiveValue: { _ in }
+                receiveValue: { (_: AlbumsResult) -> Void in }
             )
             .store(in: &cancellables)
 
         XCTAssertEqual(dataTaskProviderSpy.dataTaskPublisherCalledWith.count, 1)
 
         let urlString = dataTaskProviderSpy.dataTaskPublisherCalledWith.first?.absoluteString
-        XCTAssertEqual(urlString, "https://api.deezer.com/artist")
+        XCTAssertEqual(urlString, "https://api.deezer.com/artist/0/albums")
 
         dataTaskProviderSpy.stubbedTaskSubject.send(completion: .failure(URLError(.cannotFindHost)))
         XCTAssertEqual(caughtError as? APIError, APIError.somethingWentWrong)
+    }
+
+    func test_perform_albums() throws {
+        var caughtAlbumsResult: AlbumsResult?
+
+        sut.perform(.albums(artistId: 1872))
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { caughtAlbumsResult = $0 }
+            )
+            .store(in: &cancellables)
+
+        XCTAssertEqual(dataTaskProviderSpy.dataTaskPublisherCalledWith.count, 1)
+
+        let urlString = dataTaskProviderSpy.dataTaskPublisherCalledWith.first?.absoluteString
+        XCTAssertEqual(urlString, "https://api.deezer.com/artist/1872/albums")
+
+        let bundle = Bundle(for: type(of:self))
+        let resultPath = bundle.path(forResource: "albums_result", ofType: "json")!
+        let contentsData = try String(contentsOfFile: resultPath).data(using: .utf8)!
+
+        dataTaskProviderSpy.stubbedTaskSubject.send((data: contentsData, response: HTTPURLResponse.success))
+        XCTAssertEqual(caughtAlbumsResult?.data.count, 3)
+
+        let expectedAlbums: [Album] = [
+            .init(id: 194219042, title: "Music To Be Murdered By - Side B (Deluxe Edition)"),
+            .init(id: 127270232, title: "Music To Be Murdered By"),
+            .init(id: 72000342, title: "Kamikaze")
+        ]
+
+        let actualAlbums = caughtAlbumsResult?.data
+        XCTAssertEqual(actualAlbums, expectedAlbums)
     }
 
 }
