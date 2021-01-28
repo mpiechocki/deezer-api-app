@@ -8,7 +8,11 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     required init?(coder: NSCoder) { nil }
 
-    let albums: [Album] = [.init(id: 0, title: "Garage Inc."), .init(id: 1, title: "Music to be murdered by delux edition"), .init(id: 3, title: "XO")]
+    var albums: [Album] = [] {
+        didSet {
+            albumsView.collectionView.reloadData()
+        }
+    }
 
     // MARK: - View
 
