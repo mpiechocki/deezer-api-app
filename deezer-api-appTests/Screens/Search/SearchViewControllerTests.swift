@@ -9,6 +9,7 @@ class SearchViewControllerTest: XCTestCase {
     var sut: SearchViewController!
 
     override func setUp() {
+        super.setUp()
         deezerServiceSpy = DeezerServiceSpy()
         sut = SearchViewController(deezerService: deezerServiceSpy)
     }
@@ -16,6 +17,7 @@ class SearchViewControllerTest: XCTestCase {
     override func tearDown() {
         sut = nil
         deezerServiceSpy = nil
+        super.tearDown()
     }
 
     func test_view() {

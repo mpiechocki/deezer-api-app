@@ -10,6 +10,7 @@ class DeezerServiceTests: XCTestCase {
     var cancellables: Set<AnyCancellable>!
 
     override func setUp() {
+        super.setUp()
         apiClientSpy = APIClientSpy()
         sut = DeezerService(apiClient: apiClientSpy)
 
@@ -20,6 +21,7 @@ class DeezerServiceTests: XCTestCase {
         sut = nil
         apiClientSpy = nil
         cancellables = nil
+        super.tearDown()
     }
 
     func test_search() {

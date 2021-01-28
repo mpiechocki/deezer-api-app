@@ -9,6 +9,7 @@ class APIClientTests: XCTestCase {
     var cancellables: Set<AnyCancellable>!
 
     override func setUp() {
+        super.setUp()
         dataTaskProviderSpy = DataTaskProviderSpy()
         sut = APIClient(dataTaskProvider: dataTaskProviderSpy)
 
@@ -19,6 +20,7 @@ class APIClientTests: XCTestCase {
         sut = nil
         dataTaskProviderSpy = nil
         cancellables = nil
+        super.tearDown()
     }
 
     func test_perform_search_success() throws {
