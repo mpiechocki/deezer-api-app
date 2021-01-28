@@ -33,6 +33,7 @@
 		8DFDAED825C327780027AFB7 /* AlbumsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAED725C327780027AFB7 /* AlbumsResult.swift */; };
 		8DFDAEDC25C327820027AFB7 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAEDB25C327820027AFB7 /* Album.swift */; };
 		8DFDAEE025C32A200027AFB7 /* albums_result.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DFDAEDF25C32A200027AFB7 /* albums_result.json */; };
+		8DFDAEE725C32BFC0027AFB7 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDAEE625C32BFC0027AFB7 /* AlbumsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		8DFDAED725C327780027AFB7 /* AlbumsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsResult.swift; sourceTree = "<group>"; };
 		8DFDAEDB25C327820027AFB7 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		8DFDAEDF25C32A200027AFB7 /* albums_result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = albums_result.json; sourceTree = "<group>"; };
+		8DFDAEE625C32BFC0027AFB7 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		8D327D9725C0ACF1005FF299 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8DFDAEE525C32BC50027AFB7 /* Albums */,
 				8DF62E4A25C1DBA300A20FE3 /* Search */,
 			);
 			path = Screens;
@@ -276,6 +279,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		8DFDAEE525C32BC50027AFB7 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				8DFDAEE625C32BFC0027AFB7 /* AlbumsViewController.swift */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -386,6 +397,7 @@
 				8DF62E3825C1CFAA00A20FE3 /* Artist.swift in Sources */,
 				8D5D1E9125C19197003989E2 /* DataTaskProvider.swift in Sources */,
 				8D319B7825BF71EB0076ACC3 /* AppDelegate.swift in Sources */,
+				8DFDAEE725C32BFC0027AFB7 /* AlbumsViewController.swift in Sources */,
 				8DFDAED825C327780027AFB7 /* AlbumsResult.swift in Sources */,
 				8DABAE0625C1FC13000F1E62 /* APIClientProtocol.swift in Sources */,
 				8D319B7A25BF71EB0076ACC3 /* SceneDelegate.swift in Sources */,
