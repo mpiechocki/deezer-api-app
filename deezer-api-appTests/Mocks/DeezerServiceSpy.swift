@@ -14,4 +14,8 @@ class DeezerServiceSpy: DeezerServiceProtocol {
         return stubbedSearchSubject.eraseToAnyPublisher()
     }
 
+    func albums(for artistId: Int) -> AnyPublisher<[Album], APIError> {
+        fatalError()
+    }
+
 }

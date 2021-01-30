@@ -1,5 +1,5 @@
 import Combine
 
 protocol APIClientProtocol {
-    func perform(_ endpoint: APIEndpoint) -> AnyPublisher<SearchResult, APIError>
+    func perform<T: Decodable>(_ endpoint: APIEndpoint) -> AnyPublisher<T, APIError>
 }

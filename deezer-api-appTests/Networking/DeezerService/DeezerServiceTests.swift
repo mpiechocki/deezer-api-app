@@ -36,6 +36,7 @@ class DeezerServiceTests: XCTestCase {
 
         XCTAssertEqual(apiClientSpy.performCalledWith.count, 1)
         XCTAssertEqual(apiClientSpy.performCalledWith.first, APIEndpoint.search(query: "some query"))
+        XCTAssertEqual(caughtArtists.count, 0)
 
         let searchResult = SearchResult(
             data: [.init(id: 1, name: "Metallica"), .init(id: 2, name: "Jade Bird"), .init(id: 3, name: "Slipknot")]
@@ -44,6 +45,27 @@ class DeezerServiceTests: XCTestCase {
 
         XCTAssertEqual(caughtArtists.count, 1)
         XCTAssertEqual(caughtArtists.first, searchResult.data)
+    }
+
+    func test_albums() {
+        var caughtAlbums = [[Album]]()
+
+        sut.albums(for: 243)
+            .sink(receiveCompletion: { _ in},
+                  receiveValue: { caughtAlbums.append($0) }
+            )
+            .store(in: &cancellables)
+
+        XCTAssertEqual(apiClientSpy.performCalledWith.count, 1)
+        XCTAssertEqual(apiClientSpy.performCalledWith.first, APIEndpoint.albums(artistId: 243))
+        XCTAssertEqual(caughtAlbums.count, 0)
+
+        let albumsResult = AlbumsResult(
+            data: [.init(id: 1, title: "Life Is Peachy"), .init(id: 2, title: "Korn"), .init(id: 3, title: "Follow the leader")]
+        )
+        apiClientSpy.stubbedPerformSubject.send(albumsResult)
+        XCTAssertEqual(caughtAlbums.count, 1)
+        XCTAssertEqual(caughtAlbums.first, albumsResult.data)
     }
 
 }

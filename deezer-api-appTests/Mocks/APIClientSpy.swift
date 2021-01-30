@@ -4,14 +4,18 @@ import Combine
 class APIClientSpy: APIClientProtocol {
 
     var performCalledWith = [APIEndpoint]()
-    let stubbedPerformSubject = PassthroughSubject<SearchResult, APIError>()
+    let stubbedPerformSubject = PassthroughSubject<Decodable, APIError>()
 
     // MARK: - APIClientProtocol
 
-    func perform(_ endpoint: APIEndpoint) -> AnyPublisher<SearchResult, APIError> {
+    func perform<T: Decodable>(_ endpoint: APIEndpoint) -> AnyPublisher<T, APIError> {
         performCalledWith.append(endpoint)
 
-        return stubbedPerformSubject.eraseToAnyPublisher()
+        return stubbedPerformSubject
+            .map {
+                $0 as! T
+            }
+            .eraseToAnyPublisher()
     }
 
 }

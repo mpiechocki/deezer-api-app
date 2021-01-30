@@ -10,7 +10,13 @@ class DeezerService: DeezerServiceProtocol {
 
     func search(query: String) -> AnyPublisher<[Artist], APIError> {
         apiClient.perform(.search(query: query))
-            .map { $0.data }
+            .map { (result: SearchResult) -> [Artist] in result.data }
+            .eraseToAnyPublisher()
+    }
+
+    func albums(for artistId: Int) -> AnyPublisher<[Album], APIError> {
+        apiClient.perform(.albums(artistId: artistId))
+            .map { (result: AlbumsResult) -> [Album] in result.data }
             .eraseToAnyPublisher()
     }
 

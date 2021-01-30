@@ -12,8 +12,8 @@ extension APIEndpoint {
         switch self {
         case .search:
             path = "/search/artist"
-        case .albums(let id):
-            path = "/artist/\(id)/albums"
+        case .albums(let artistId):
+            path = "/artist/\(artistId)/albums"
         }
 
         return path
