@@ -185,4 +185,58 @@ class APIClientTests: XCTestCase {
         XCTAssertNotNil(caughtImage)
     }
 
+    func test_loadImageUndecodable() throws {
+        var caughtImage: UIImage?
+
+        sut.loadImage(url: "http://url.to/image.jpg")
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { caughtImage = $0 }
+            )
+            .store(in: &cancellables)
+
+        let bundle = Bundle(for: type(of:self))
+        let imagePath = bundle.path(forResource: "albums_result", ofType: "json")!
+        let contentsData = try String(contentsOfFile: imagePath).data(using: .utf8)!
+
+        dataTaskProviderSpy.stubbedTaskSubject.send((data: contentsData, response: HTTPURLResponse.success))
+        XCTAssertNil(caughtImage)
+    }
+
+    func test_loadImageFailure() throws {
+        var caughtError: APIError?
+
+        sut.loadImage(url: "http://url.to/image.jpg")
+            .sink(
+                receiveCompletion: {
+                    if case let .failure(error) = $0 {
+                        caughtError = error
+                    }
+                },
+                receiveValue: { _ in }
+            )
+            .store(in: &cancellables)
+
+        dataTaskProviderSpy.stubbedTaskSubject.send((data: Data(), response: HTTPURLResponse.forbidden))
+        XCTAssertEqual(caughtError, .somethingWentWrong)
+    }
+
+    func test_loadImageBadURL() throws {
+        var caughtError: APIError?
+
+        sut.loadImage(url: "bad url")
+            .sink(
+                receiveCompletion: {
+                    if case let .failure(error) = $0 {
+                        caughtError = error
+                    }
+                },
+                receiveValue: { _ in }
+            )
+            .store(in: &cancellables)
+
+        dataTaskProviderSpy.stubbedTaskSubject.send((data: Data(), response: HTTPURLResponse.success))
+        XCTAssertEqual(caughtError, .somethingWentWrong)
+    }
+
 }
