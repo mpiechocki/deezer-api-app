@@ -22,7 +22,7 @@ class APIClient: APIClientProtocol {
 
                 return element.data
             }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .decode(type: T.self, decoder: JSONDecoder.withConverFromSnakeCaseStategy)
             .mapError { _ in APIError.somethingWentWrong }
             .eraseToAnyPublisher()
     }
@@ -49,5 +49,15 @@ class APIClient: APIClientProtocol {
     // MARK: - Private
 
     private let dataTaskProvider: DataTaskProvider
+
+}
+
+extension JSONDecoder {
+
+    static var withConverFromSnakeCaseStategy: JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }
 
 }

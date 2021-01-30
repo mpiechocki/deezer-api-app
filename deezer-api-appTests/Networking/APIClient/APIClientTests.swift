@@ -154,9 +154,9 @@ class APIClientTests: XCTestCase {
         XCTAssertEqual(caughtAlbumsResult?.data.count, 3)
 
         let expectedAlbums: [Album] = [
-            .init(id: 194219042, title: "Music To Be Murdered By - Side B (Deluxe Edition)"),
-            .init(id: 127270232, title: "Music To Be Murdered By"),
-            .init(id: 72000342, title: "Kamikaze")
+            .init(id: 194219042, title: "Music To Be Murdered By - Side B (Deluxe Edition)", coverSmall: "http://e-cdn-images.deezer.com/images/cover/55d424a53904d145b17869ba133843d7/56x56-000000-80-0-0.jpg"),
+            .init(id: 127270232, title: "Music To Be Murdered By", coverSmall: "http://e-cdn-images.deezer.com/images/cover/4d00a7848dc8af475973ff1761ad828d/56x56-000000-80-0-0.jpg"),
+            .init(id: 72000342, title: "Kamikaze", coverSmall: "http://e-cdn-images.deezer.com/images/cover/bf74fc764097630ba58782ae79cfbee6/56x56-000000-80-0-0.jpg")
         ]
 
         let actualAlbums = caughtAlbumsResult?.data
