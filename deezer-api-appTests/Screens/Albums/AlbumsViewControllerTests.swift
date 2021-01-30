@@ -57,7 +57,7 @@ class AlbumsViewControllerTests: XCTestCase {
         XCTAssertEqual(deezerServiceSpy.albumsCalledWith.first?.artistId, 123456)
         XCTAssertEqual(deezerServiceSpy.albumsCalledWith.first?.index, 0)
 
-        deezerServiceSpy.stubbedAlbumsSubject.send(.stubbedAlbums)
+        deezerServiceSpy.stubbedAlbumsSubject.send(AlbumsResult(data: .stubbedAlbums, total: 3))
         let mainThread = XCTestExpectation(description: "main thread")
         _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
         XCTAssertEqual(sut.albums, .stubbedAlbums)

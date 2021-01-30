@@ -1,5 +1,4 @@
-struct AlbumsResult: Decodable {
+struct AlbumsResult: Decodable, Equatable {
     let data: [Album]
     let total: Int
-    let next: String
 }

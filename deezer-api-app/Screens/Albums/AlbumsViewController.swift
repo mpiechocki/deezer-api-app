@@ -91,7 +91,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { print($0) },
-                receiveValue: { [weak self] in self?.albums = $0 }
+                receiveValue: { [weak self] in self?.albums = $0.data }
             )
             .store(in: &cancellables)
     }
