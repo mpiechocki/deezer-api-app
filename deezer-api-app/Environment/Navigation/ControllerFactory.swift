@@ -7,8 +7,8 @@ class ControllerFactory: ControllerFactoring {
         switch route {
         case .search:
             controller = SearchViewController(deezerService: deezerService)
-        case .albums:
-            controller = AlbumsViewController()
+        case .albums(let artistId):
+            controller = AlbumsViewController(artistId: artistId, deezerService: deezerService)
         }
         return controller
     }

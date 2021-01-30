@@ -1,4 +1,4 @@
-enum Route {
+enum Route: Equatable {
     case search
-    case albums
+    case albums(artistId: Int)
 }

@@ -1,4 +1,4 @@
 struct Artist: Equatable, Decodable {
-    let id: UInt
+    let id: Int
     let name: String
 }

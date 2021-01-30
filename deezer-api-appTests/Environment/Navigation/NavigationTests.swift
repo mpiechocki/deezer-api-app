@@ -26,10 +26,10 @@ class NavigationTests: XCTestCase {
         let firstController = UIViewController(nibName: nil, bundle: nil)
         navigationController.stubbedViewControllers = [firstController]
 
-        sut.go(to: .albums)
+        sut.go(to: .albums(artistId: 1))
 
         XCTAssertEqual(controllerFactorySpy.createControllerCalledWith.count, 1)
-        XCTAssertEqual(controllerFactorySpy.createControllerCalledWith.first, .albums)
+        XCTAssertEqual(controllerFactorySpy.createControllerCalledWith.first, .albums(artistId: 1))
         XCTAssertEqual(navigationController.viewControllers.count, 2)
         XCTAssertTrue(navigationController.viewControllers.first === firstController)
         XCTAssertTrue(navigationController.viewControllers.last === controllerFactorySpy.stubbedController)

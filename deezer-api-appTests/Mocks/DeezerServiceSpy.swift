@@ -5,6 +5,8 @@ class DeezerServiceSpy: DeezerServiceProtocol {
 
     var searchCalledWith = [String]()
     var stubbedSearchSubject = PassthroughSubject<[Artist], APIError>()
+    var albumsCalledWith = [Int]()
+    var stubbedAlbumsSubject = PassthroughSubject<[Album], APIError>()
 
     // MARK: - DeezerServiceProtocol
 
@@ -15,7 +17,9 @@ class DeezerServiceSpy: DeezerServiceProtocol {
     }
 
     func albums(for artistId: Int) -> AnyPublisher<[Album], APIError> {
-        fatalError()
+        albumsCalledWith.append(artistId)
+
+        return stubbedAlbumsSubject.eraseToAnyPublisher()
     }
 
 }

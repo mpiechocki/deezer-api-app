@@ -55,7 +55,7 @@ class APIClientTests: XCTestCase {
         let actualArtistsNames = caughtSearchResult?.data.map { $0.name }
         XCTAssertEqual(actualArtistsNames, expectedArtistsNames)
 
-        let expectedIds: [UInt] = [169, 67268272, 5862296]
+        let expectedIds: [Int] = [169, 67268272, 5862296]
         let actualIds = caughtSearchResult?.data.map { $0.id }
         XCTAssertEqual(actualIds, expectedIds)
     }

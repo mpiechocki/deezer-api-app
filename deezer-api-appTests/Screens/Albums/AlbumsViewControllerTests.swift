@@ -3,15 +3,18 @@ import XCTest
 
 class AlbumsViewControllerTests: XCTestCase {
 
+    var deezerServiceSpy: DeezerServiceSpy!
     var sut: AlbumsViewController!
 
     override func setUp() {
         super.setUp()
-        sut = AlbumsViewController()
+        deezerServiceSpy = DeezerServiceSpy()
+        sut = AlbumsViewController(artistId: 123456, deezerService: deezerServiceSpy)
     }
 
     override func tearDown() {
         sut = nil
+        deezerServiceSpy = nil
         super.tearDown()
     }
 
@@ -50,6 +53,13 @@ class AlbumsViewControllerTests: XCTestCase {
         let cell3 = sut.collectionView(collectionView, cellForItemAt: IndexPath(row: 2, section: 0)) as? AlbumCell
         XCTAssertNotNil(cell3)
         XCTAssertEqual(cell3?.titleLabel.text, "Master Of Puppets")
+    }
+
+    func test_loadingAlbums() {
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.count, 1)
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.first, 123456)
     }
 
 }

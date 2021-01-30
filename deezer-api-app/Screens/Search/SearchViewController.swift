@@ -47,7 +47,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Environment.navigation.go(to: .albums)
+        let artist = artists[indexPath.row]
+        Environment.navigation.go(to: .albums(artistId: artist.id))
     }
 
     // MARK: - UISearchBarDelegate

@@ -1,12 +1,17 @@
+import Combine
 import UIKit
 
 class AlbumsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    init() {
+    init(artistId: Int, deezerService: DeezerServiceProtocol) {
+        self.artistId = artistId
+        self.deezerService = deezerService
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) { nil }
+
+    let artistId: Int
 
     var albums: [Album] = [] {
         didSet {
@@ -27,6 +32,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        loadAlbums()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -71,10 +77,22 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     // MARK: - Private
 
+    private let deezerService: DeezerServiceProtocol
+    private var cancellables = Set<AnyCancellable>()
+
     private func configureCollectionView() {
         albumsView.collectionView.register(AlbumCell.self, forCellWithReuseIdentifier: AlbumCell.reuseId)
         albumsView.collectionView.dataSource = self
         albumsView.collectionView.delegate = self
+    }
+
+    private func loadAlbums() {
+        deezerService.albums(for: artistId)
+            .sink(
+                receiveCompletion: { print($0) },
+                receiveValue: { [weak self] in self?.albums = $0 }
+            )
+            .store(in: &cancellables)
     }
 
 }

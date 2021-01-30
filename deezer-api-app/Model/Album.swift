@@ -1,4 +1,4 @@
 struct Album: Decodable, Equatable {
-    let id: UInt
+    let id: Int
     let title: String
 }
