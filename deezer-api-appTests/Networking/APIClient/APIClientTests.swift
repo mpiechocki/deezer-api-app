@@ -101,7 +101,7 @@ class APIClientTests: XCTestCase {
         XCTAssertEqual(dataTaskProviderSpy.dataTaskPublisherCalledWith.count, 1)
 
         let urlString = dataTaskProviderSpy.dataTaskPublisherCalledWith.first?.absoluteString
-        XCTAssertEqual(urlString, "https://api.deezer.com/artist/0/albums")
+        XCTAssertEqual(urlString, "https://api.deezer.com/artist/0/albums?index=0")
 
         let response = HTTPURLResponse.forbidden
         dataTaskProviderSpy.stubbedTaskSubject.send((data: Data(), response: response))
@@ -125,7 +125,7 @@ class APIClientTests: XCTestCase {
         XCTAssertEqual(dataTaskProviderSpy.dataTaskPublisherCalledWith.count, 1)
 
         let urlString = dataTaskProviderSpy.dataTaskPublisherCalledWith.first?.absoluteString
-        XCTAssertEqual(urlString, "https://api.deezer.com/artist/0/albums")
+        XCTAssertEqual(urlString, "https://api.deezer.com/artist/0/albums?index=0")
 
         dataTaskProviderSpy.stubbedTaskSubject.send(completion: .failure(URLError(.cannotFindHost)))
         XCTAssertEqual(caughtError as? APIError, APIError.somethingWentWrong)
@@ -144,7 +144,7 @@ class APIClientTests: XCTestCase {
         XCTAssertEqual(dataTaskProviderSpy.dataTaskPublisherCalledWith.count, 1)
 
         let urlString = dataTaskProviderSpy.dataTaskPublisherCalledWith.first?.absoluteString
-        XCTAssertEqual(urlString, "https://api.deezer.com/artist/1872/albums")
+        XCTAssertEqual(urlString, "https://api.deezer.com/artist/1872/albums?index=0")
 
         let bundle = Bundle(for: type(of:self))
         let resultPath = bundle.path(forResource: "albums_result", ofType: "json")!

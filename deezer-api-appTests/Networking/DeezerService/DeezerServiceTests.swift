@@ -61,7 +61,9 @@ class DeezerServiceTests: XCTestCase {
         XCTAssertEqual(caughtAlbums.count, 0)
 
         let albumsResult = AlbumsResult(
-            data: [.init(id: 1, title: "Life Is Peachy"), .init(id: 2, title: "Korn"), .init(id: 3, title: "Follow the leader")]
+            data: [.init(id: 1, title: "Life Is Peachy"), .init(id: 2, title: "Korn"), .init(id: 3, title: "Follow the leader")],
+            total: 3,
+            next: ""
         )
         apiClientSpy.stubbedPerformSubject.send(albumsResult)
         XCTAssertEqual(caughtAlbums.count, 1)
