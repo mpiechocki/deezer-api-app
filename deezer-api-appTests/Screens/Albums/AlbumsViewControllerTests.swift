@@ -50,6 +50,25 @@ class AlbumsViewControllerTests: XCTestCase {
         XCTAssertEqual(cell3?.titleLabel.text, "Master Of Puppets")
     }
 
+    func test_loadingCellImages() {
+        sut.loadViewIfNeeded()
+        sut.view.frame = .init(origin: .zero, size: .init(width: 200, height: 500))
+        sut.view.layoutIfNeeded()
+
+        let collectionView = sut.albumsView.collectionView
+        sut.albums = .stubbedAlbums
+        let cell = sut.collectionView(collectionView, cellForItemAt: IndexPath(row: 0, section: 0)) as? AlbumCell
+        XCTAssertEqual(deezerServiceSpy.imageCalledWith.count, 1)
+        XCTAssertEqual(deezerServiceSpy.imageCalledWith.first, "https://url.to/128.jpg")
+        XCTAssertNil(cell?.imageView.image)
+
+        let stubbedImage = UIImage()
+        deezerServiceSpy.stubbedImageSubject.send(stubbedImage)
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+        XCTAssertTrue(cell?.imageView.image === stubbedImage)
+    }
+
     func test_loadingAlbums() {
         sut.loadViewIfNeeded()
 
@@ -66,7 +85,7 @@ class AlbumsViewControllerTests: XCTestCase {
     func test_pagination() {
         sut.loadViewIfNeeded()
         let stubbedAlbumsResult1 = AlbumsResult(
-            data: [.init(id: 128, title: "+", coverSmall: ""), .init(id: 129, title: "*", coverSmall: "")],
+            data: [.init(id: 128, title: "+", coverMedium: ""), .init(id: 129, title: "*", coverMedium: "")],
             total: 5
         )
         deezerServiceSpy.stubbedAlbumsSubject.send(stubbedAlbumsResult1)
@@ -87,9 +106,9 @@ class AlbumsViewControllerTests: XCTestCase {
 
         let stubbedAlbumsResult2 = AlbumsResult(
             data: [
-                .init(id: 130, title: "/", coverSmall: ""),
-                .init(id: 131, title: "Greatest hits", coverSmall: ""),
-                .init(id: 132, title: "+ (Deluxe)", coverSmall: "")
+                .init(id: 130, title: "/", coverMedium: ""),
+                .init(id: 131, title: "Greatest hits", coverMedium: ""),
+                .init(id: 132, title: "+ (Deluxe)", coverMedium: "")
             ],
             total: 5
         )

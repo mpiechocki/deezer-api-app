@@ -1,3 +1,4 @@
+import Combine
 import UIKit
 
 class AlbumCell: UICollectionViewCell {
@@ -11,10 +12,13 @@ class AlbumCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) { nil }
 
+    var cancellables = Set<AnyCancellable>()
+
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
         titleLabel.text = nil
+        cancellables = Set<AnyCancellable>()
     }
 
     // MARK: - Subviews

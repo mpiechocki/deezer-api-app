@@ -49,7 +49,14 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         let album = albums[indexPath.row]
         cell.titleLabel.text = album.title
-        cell.imageView.image = UIImage(systemName: "scribble")
+        deezerService.image(path: album.coverMedium)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { cell.imageView.image = $0 }
+            )
+            .store(in: &cell.cancellables)
+
         return cell
     }
 
