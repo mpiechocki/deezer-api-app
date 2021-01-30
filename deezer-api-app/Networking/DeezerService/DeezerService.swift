@@ -14,8 +14,8 @@ class DeezerService: DeezerServiceProtocol {
             .eraseToAnyPublisher()
     }
 
-    func albums(for artistId: Int) -> AnyPublisher<[Album], APIError> {
-        apiClient.perform(.albums(artistId: artistId))
+    func albums(for artistId: Int, fromIndex index: Int) -> AnyPublisher<[Album], APIError> {
+        apiClient.perform(.albums(artistId: artistId, index: index))
             .map { (result: AlbumsResult) -> [Album] in result.data }
             .eraseToAnyPublisher()
     }

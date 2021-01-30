@@ -87,7 +87,7 @@ class APIClientTests: XCTestCase {
     func test_perform_url_failure() {
         var caughtError: Error?
 
-        sut.perform(.albums(artistId: 0))
+        sut.perform(.albums(artistId: 0, index: 0))
             .sink(
                 receiveCompletion: {
                     if case .failure(let error) = $0 {
@@ -111,7 +111,7 @@ class APIClientTests: XCTestCase {
     func test_perform_session_failure() {
         var caughtError: Error?
 
-        sut.perform(.albums(artistId: 0))
+        sut.perform(.albums(artistId: 0, index: 0))
             .sink(
                 receiveCompletion: {
                     if case .failure(let error) = $0 {
@@ -134,7 +134,7 @@ class APIClientTests: XCTestCase {
     func test_perform_albums() throws {
         var caughtAlbumsResult: AlbumsResult?
 
-        sut.perform(.albums(artistId: 1872))
+        sut.perform(.albums(artistId: 1872, index: 0))
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { caughtAlbumsResult = $0 }

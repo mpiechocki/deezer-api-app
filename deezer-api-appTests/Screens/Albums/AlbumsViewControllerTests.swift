@@ -36,13 +36,8 @@ class AlbumsViewControllerTests: XCTestCase {
         XCTAssertEqual(itemSize, CGSize(width: 92, height: 101.2))
 
         XCTAssertEqual(sut.collectionView(collectionView, numberOfItemsInSection: 0), 0)
-        let stubbedAlbums: [Album] = [
-            .init(id: 128, title: "Garage Inc."),
-            .init(id: 256, title: "S&M"),
-            .init(id: 1024, title: "Master Of Puppets")
-        ]
 
-        sut.albums = stubbedAlbums
+        sut.albums = .stubbedAlbums
 
         XCTAssertEqual(sut.collectionView(collectionView, numberOfItemsInSection: 0), 3)
 
@@ -59,7 +54,13 @@ class AlbumsViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
 
         XCTAssertEqual(deezerServiceSpy.albumsCalledWith.count, 1)
-        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.first, 123456)
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.first?.artistId, 123456)
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.first?.index, 0)
+
+        deezerServiceSpy.stubbedAlbumsSubject.send(.stubbedAlbums)
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+        XCTAssertEqual(sut.albums, .stubbedAlbums)
     }
 
 }

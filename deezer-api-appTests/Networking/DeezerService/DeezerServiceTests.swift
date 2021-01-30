@@ -50,14 +50,14 @@ class DeezerServiceTests: XCTestCase {
     func test_albums() {
         var caughtAlbums = [[Album]]()
 
-        sut.albums(for: 243)
+        sut.albums(for: 243, fromIndex: 0)
             .sink(receiveCompletion: { _ in},
                   receiveValue: { caughtAlbums.append($0) }
             )
             .store(in: &cancellables)
 
         XCTAssertEqual(apiClientSpy.performCalledWith.count, 1)
-        XCTAssertEqual(apiClientSpy.performCalledWith.first, APIEndpoint.albums(artistId: 243))
+        XCTAssertEqual(apiClientSpy.performCalledWith.first, APIEndpoint.albums(artistId: 243, index: 0))
         XCTAssertEqual(caughtAlbums.count, 0)
 
         let albumsResult = AlbumsResult(

@@ -87,7 +87,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
 
     private func loadAlbums() {
-        deezerService.albums(for: artistId)
+        deezerService.albums(for: artistId, fromIndex: 0)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { print($0) },

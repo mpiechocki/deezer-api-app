@@ -2,7 +2,7 @@ import Foundation
 
 enum APIEndpoint: Equatable {
     case search(query: String)
-    case albums(artistId: Int, index: Int = 0)
+    case albums(artistId: Int, index: Int)
 }
 
 extension APIEndpoint {
