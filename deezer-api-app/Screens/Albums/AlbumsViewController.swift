@@ -18,6 +18,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
             albumsView.collectionView.reloadData()
         }
     }
+    var totalAlbums = 0
 
     // MARK: - View
 
@@ -75,6 +76,21 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
         4
     }
 
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.row == albums.count - 1, albums.count < totalAlbums else { return }
+        let index = albums.count
+        deezerService.albums(for: artistId, fromIndex: index)
+            .first()
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { [weak self] _ in self?.handleCompletion() },
+                receiveValue: { [weak self] in
+                    self?.albums += $0.data
+                }
+            )
+            .store(in: &cancellables)
+    }
+
     // MARK: - Private
 
     private let deezerService: DeezerServiceProtocol
@@ -88,12 +104,18 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     private func loadAlbums() {
         deezerService.albums(for: artistId, fromIndex: 0)
+            .first()
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { print($0) },
-                receiveValue: { [weak self] in self?.albums = $0.data }
+                receiveCompletion: { [weak self] _ in self?.handleCompletion() },
+                receiveValue: { [weak self] in
+                    self?.albums = $0.data
+                    self?.totalAlbums = $0.total
+                }
             )
             .store(in: &cancellables)
     }
+
+    private func handleCompletion() { /* TODO */ }
 
 }

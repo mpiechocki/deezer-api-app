@@ -63,4 +63,45 @@ class AlbumsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.albums, .stubbedAlbums)
     }
 
+    func test_pagination() {
+        sut.loadViewIfNeeded()
+        let stubbedAlbumsResult1 = AlbumsResult(
+            data: [.init(id: 128, title: "+"), .init(id: 129, title: "*")],
+            total: 5
+        )
+        deezerServiceSpy.stubbedAlbumsSubject.send(stubbedAlbumsResult1)
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+
+        XCTAssertEqual(sut.albums, stubbedAlbumsResult1.data)
+
+        let collectionView = sut.albumsView.collectionView
+
+        collectionView.delegate?.collectionView?(collectionView, willDisplay: UICollectionViewCell(), forItemAt: IndexPath(row: 0, section: 0))
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.count, 1)
+
+        collectionView.delegate?.collectionView?(collectionView, willDisplay: UICollectionViewCell(), forItemAt: IndexPath(row: 1, section: 0))
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.count, 2)
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.last?.artistId, 123456)
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.last?.index, 2)
+
+        let stubbedAlbumsResult2 = AlbumsResult(
+            data: [.init(id: 130, title: "/"), .init(id: 131, title: "Greatest hits"), .init(id: 132, title: "+ (Deluxe)")],
+            total: 5
+        )
+
+        deezerServiceSpy.stubbedAlbumsSubject.send(stubbedAlbumsResult2)
+        let mainThread2 = XCTestExpectation(description: "main thread 2")
+        _ = XCTWaiter.wait(for: [mainThread2], timeout: 0.1)
+        print(sut.albums)
+        XCTAssertEqual(sut.albums.count, 5)
+        XCTAssertEqual(sut.albums, stubbedAlbumsResult1.data + stubbedAlbumsResult2.data)
+
+        collectionView.delegate?.collectionView?(collectionView, willDisplay: UICollectionViewCell(), forItemAt: IndexPath(row: 2, section: 0))
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.count, 2)
+
+        collectionView.delegate?.collectionView?(collectionView, willDisplay: UICollectionViewCell(), forItemAt: IndexPath(row: 4, section: 0))
+        XCTAssertEqual(deezerServiceSpy.albumsCalledWith.count, 2)
+    }
+
 }
