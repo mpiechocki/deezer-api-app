@@ -3,11 +3,18 @@ import XCTest
 
 class AlbumsViewControllerTests: XCTestCase {
 
+    var savedNavigation: NavigationProtocol!
+    var navigationSpy: NavigationSpy!
     var deezerServiceSpy: DeezerServiceSpy!
     var sut: AlbumsViewController!
 
     override func setUp() {
         super.setUp()
+        navigationSpy = NavigationSpy()
+        savedNavigation = Environment.navigation
+        Environment.navigation = navigationSpy
+
+
         deezerServiceSpy = DeezerServiceSpy()
         sut = AlbumsViewController(artistId: 123456, deezerService: deezerServiceSpy)
     }
@@ -15,6 +22,10 @@ class AlbumsViewControllerTests: XCTestCase {
     override func tearDown() {
         sut = nil
         deezerServiceSpy = nil
+        navigationSpy = nil
+
+        Environment.navigation = savedNavigation
+        savedNavigation = nil
         super.tearDown()
     }
 
@@ -125,6 +136,17 @@ class AlbumsViewControllerTests: XCTestCase {
 
         collectionView.delegate?.collectionView?(collectionView, willDisplay: UICollectionViewCell(), forItemAt: IndexPath(row: 4, section: 0))
         XCTAssertEqual(deezerServiceSpy.albumsCalledWith.count, 2)
+    }
+
+    func test_cellSelect() {
+        sut.loadViewIfNeeded()
+        sut.albums = .stubbedAlbums
+
+        let collectionView = sut.albumsView.collectionView
+
+        sut.collectionView(collectionView, didSelectItemAt: IndexPath(row: 2, section: 0))
+        XCTAssertEqual(navigationSpy.goCalledWith.count, 1)
+        XCTAssertEqual(navigationSpy.goCalledWith.first, .albumDetails)
     }
 
 }

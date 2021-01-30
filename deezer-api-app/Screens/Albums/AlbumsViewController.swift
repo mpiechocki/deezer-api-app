@@ -98,6 +98,10 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
             .store(in: &cancellables)
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        Environment.navigation.go(to: .albumDetails)
+    }
+
     // MARK: - Private
 
     private let deezerService: DeezerServiceProtocol
