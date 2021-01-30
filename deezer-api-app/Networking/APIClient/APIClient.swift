@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import UIKit
 
 class APIClient: APIClientProtocol {
 
@@ -22,6 +23,25 @@ class APIClient: APIClientProtocol {
                 return element.data
             }
             .decode(type: T.self, decoder: JSONDecoder())
+            .mapError { _ in APIError.somethingWentWrong }
+            .eraseToAnyPublisher()
+    }
+
+    func loadImage(url: String) -> AnyPublisher<UIImage?, APIError> {
+        guard let url = URL(string: url) else {
+            return Fail<UIImage?, APIError>(error: APIError.somethingWentWrong).eraseToAnyPublisher()
+        }
+
+        return dataTaskProvider.taskPublisher(for: url)
+            .tryMap { (element: (data: Data, response: URLResponse)) -> Data in
+                guard let response = element.response as? HTTPURLResponse,
+                      response.statusCode == 200 else {
+                    throw APIError.somethingWentWrong
+                }
+
+                return element.data
+            }
+            .map { UIImage(data: $0) }
             .mapError { _ in APIError.somethingWentWrong }
             .eraseToAnyPublisher()
     }

@@ -163,16 +163,26 @@ class APIClientTests: XCTestCase {
         XCTAssertEqual(actualAlbums, expectedAlbums)
     }
 
-}
+    func test_loadImage() {
+        var caughtImage: UIImage?
 
-extension HTTPURLResponse {
+        sut.loadImage(url: "http://url.to/image.jpg")
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { caughtImage = $0 }
+            )
+            .store(in: &cancellables)
 
-    static var success: HTTPURLResponse {
-        HTTPURLResponse(url: URL(fileURLWithPath: ""), statusCode: 200, httpVersion: nil, headerFields: nil)!
-    }
+        XCTAssertEqual(dataTaskProviderSpy.dataTaskPublisherCalledWith.count, 1)
+        let urlString = dataTaskProviderSpy.dataTaskPublisherCalledWith.first?.absoluteString
+        XCTAssertEqual(urlString, "http://url.to/image.jpg")
 
-    static var forbidden: HTTPURLResponse {
-        HTTPURLResponse(url: URL(fileURLWithPath: ""), statusCode: 403, httpVersion: nil, headerFields: nil)!
+        let bundle = Bundle(for: type(of:self))
+        let imagePath = bundle.path(forResource: "daftpunk", ofType: "jpg")!
+        let contentsData = UIImage(contentsOfFile: imagePath)!.jpegData(compressionQuality: 1.0)!
+
+        dataTaskProviderSpy.stubbedTaskSubject.send((data: contentsData, response: HTTPURLResponse.success))
+        XCTAssertNotNil(caughtImage)
     }
 
 }

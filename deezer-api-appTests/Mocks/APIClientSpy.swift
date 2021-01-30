@@ -1,4 +1,5 @@
 import Combine
+import UIKit
 @testable import deezer_api_app
 
 class APIClientSpy: APIClientProtocol {
@@ -16,6 +17,10 @@ class APIClientSpy: APIClientProtocol {
                 $0 as! T
             }
             .eraseToAnyPublisher()
+    }
+
+    func loadImage(url: String) -> AnyPublisher<UIImage?, APIError> {
+        fatalError()
     }
 
 }
