@@ -1,4 +1,5 @@
 import Combine
+import UIKit
 @testable import deezer_api_app
 
 class DeezerServiceSpy: DeezerServiceProtocol {
@@ -7,6 +8,8 @@ class DeezerServiceSpy: DeezerServiceProtocol {
     var stubbedSearchSubject = PassthroughSubject<[Artist], APIError>()
     var albumsCalledWith = [(artistId: Int, index: Int)]()
     var stubbedAlbumsSubject = PassthroughSubject<AlbumsResult, APIError>()
+    var imageCalledWith = [String]()
+    var stubbedImageSubject = PassthroughSubject<UIImage?, APIError>()
 
     // MARK: - DeezerServiceProtocol
 
@@ -20,6 +23,12 @@ class DeezerServiceSpy: DeezerServiceProtocol {
         albumsCalledWith.append((artistId, index))
 
         return stubbedAlbumsSubject.eraseToAnyPublisher()
+    }
+
+    func image(path: String) -> AnyPublisher<UIImage?, APIError> {
+        imageCalledWith.append(path)
+
+        return stubbedImageSubject.eraseToAnyPublisher()
     }
 
 }

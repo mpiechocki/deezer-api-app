@@ -69,4 +69,23 @@ class DeezerServiceTests: XCTestCase {
         XCTAssertEqual(caughtAlbumsResult.first, albumsResult)
     }
 
+    func test_image() {
+        var caughtImage: UIImage?
+
+        sut.image(path: "https://some.url")
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { caughtImage = $0 }
+            )
+            .store(in: &cancellables)
+
+        XCTAssertEqual(apiClientSpy.loadImageCalledWith.count, 1)
+        XCTAssertEqual(apiClientSpy.loadImageCalledWith.first, "https://some.url")
+        XCTAssertNil(caughtImage)
+
+        let stubbedImage = UIImage()
+        apiClientSpy.stubbedLoadImageSubject.send(stubbedImage)
+        XCTAssertTrue(caughtImage === stubbedImage)
+    }
+
 }

@@ -1,4 +1,5 @@
 import Combine
+import UIKit
 
 class DeezerService: DeezerServiceProtocol {
 
@@ -17,6 +18,10 @@ class DeezerService: DeezerServiceProtocol {
     func albums(for artistId: Int, fromIndex index: Int) -> AnyPublisher<AlbumsResult, APIError> {
         apiClient.perform(.albums(artistId: artistId, index: index))
             .eraseToAnyPublisher()
+    }
+
+    func image(path: String) -> AnyPublisher<UIImage?, APIError> {
+        apiClient.loadImage(url: path)
     }
 
     // MARK: - Private

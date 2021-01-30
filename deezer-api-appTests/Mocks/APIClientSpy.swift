@@ -6,6 +6,8 @@ class APIClientSpy: APIClientProtocol {
 
     var performCalledWith = [APIEndpoint]()
     let stubbedPerformSubject = PassthroughSubject<Decodable, APIError>()
+    var loadImageCalledWith = [String]()
+    let stubbedLoadImageSubject = PassthroughSubject<UIImage?, APIError>()
 
     // MARK: - APIClientProtocol
 
@@ -20,7 +22,9 @@ class APIClientSpy: APIClientProtocol {
     }
 
     func loadImage(url: String) -> AnyPublisher<UIImage?, APIError> {
-        fatalError()
+        loadImageCalledWith.append(url)
+
+        return stubbedLoadImageSubject.eraseToAnyPublisher()
     }
 
 }
