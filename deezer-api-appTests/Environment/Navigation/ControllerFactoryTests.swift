@@ -29,4 +29,10 @@ class ControllerFactoryTests: XCTestCase {
         XCTAssertEqual((createdController as? AlbumsViewController)?.artistId, 4)
     }
 
+    func test_createAlbumDetailsViewController() {
+        let createdController = sut.createController(for: .albumDetails)
+
+        XCTAssertTrue(type(of: createdController) == AlbumDetailsViewController.self)
+    }
+
 }

@@ -9,6 +9,8 @@ class ControllerFactory: ControllerFactoring {
             controller = SearchViewController(deezerService: deezerService)
         case .albums(let artistId):
             controller = AlbumsViewController(artistId: artistId, deezerService: deezerService)
+        case .albumDetails:
+            controller = AlbumDetailsViewController()
         }
         return controller
     }
