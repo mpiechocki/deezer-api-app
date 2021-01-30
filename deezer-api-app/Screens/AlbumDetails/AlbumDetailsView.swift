@@ -21,8 +21,8 @@ class AlbumDetailsView: UIView {
         addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4.0),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4.0),
             tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])

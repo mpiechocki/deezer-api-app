@@ -9,13 +9,11 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
     required init?(coder: NSCoder) { nil }
 
     let albumDetails: AlbumDetails = .init(albumId: 4, coverPath: "asda")
-    var tracks: [Track] = [
-        .init(title: "Song 1", duration: 134, trackPosition: 1),
-        .init(title: "Song 2", duration: 233, trackPosition: 2),
-        .init(title: "Song 3", duration: 531, trackPosition: 3),
-        .init(title: "Song 4", duration: 42, trackPosition: 4),
-        .init(title: "Song 5", duration: 312, trackPosition: 5)
-    ]
+    var tracks = [Track]() {
+        didSet {
+            albumDetailsView.tableView.reloadData()
+        }
+    }
 
     // MARK: - View
 
