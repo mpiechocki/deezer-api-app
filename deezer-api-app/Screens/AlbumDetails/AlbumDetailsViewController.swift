@@ -59,6 +59,13 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         return cell
     }
 
+    // MARK: - UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard indexPath.row == tracks.count - 1, tracks.count < totalTracks else { return }
+        loadTracks(fromIndex: tracks.count)
+    }
+
     // MARK: - Private
 
     private let deezerService: DeezerServiceProtocol
@@ -67,6 +74,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
 
     private func configureTableView() {
         albumDetailsView.tableView.register(TrackCell.self, forCellReuseIdentifier: TrackCell.reuseId)
+        albumDetailsView.tableView.delegate = self
         albumDetailsView.tableView.dataSource = self
         albumDetailsView.tableView.tableHeaderView = albumHeader
     }
@@ -89,7 +97,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] in
-                    self?.tracks += $0.data
+                    self?.tracks += $0.data.sorted(by: { $0.trackPosition < $1.trackPosition })
                     self?.totalTracks = $0.total
                   }
             )
