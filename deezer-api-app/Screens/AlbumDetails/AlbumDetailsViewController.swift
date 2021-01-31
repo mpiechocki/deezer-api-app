@@ -56,7 +56,8 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         cell.numberLabel.text = "\(track.trackPosition)."
         cell.diskNumberLabel.text = "disk \(track.diskNumber)."
         cell.titleLabel.text = track.title
-        cell.durationLabel.text = "\(track.duration)"
+        let duration = track.duration.toMinuesSeconds
+        cell.durationLabel.text = "\(duration.m):" + String(format: "%02d", duration.s)
         return cell
     }
 
