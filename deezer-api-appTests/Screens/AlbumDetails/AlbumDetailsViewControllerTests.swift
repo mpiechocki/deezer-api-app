@@ -46,7 +46,7 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         sut.view.layoutIfNeeded()
 
         sut.viewDidLayoutSubviews()
-        XCTAssertEqual(sut.albumDetailsView.tableView.tableHeaderView?.frame, CGRect(origin: .zero, size: CGSize(width: 0, height: 96)))
+        XCTAssertEqual(sut.albumDetailsView.tableView.tableHeaderView?.frame, CGRect(origin: .zero, size: CGSize(width: 0, height: 100)))
     }
 
     func test_tableView() {

@@ -70,7 +70,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionViewSize = collectionView.bounds.size
-        let cellWidth = (collectionViewSize.width / 2) - 4
+        let cellWidth = (collectionViewSize.width / 2) - 12
         let cellHeight = cellWidth * 1.1
         return .init(width: cellWidth, height: cellHeight)
     }

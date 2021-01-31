@@ -48,7 +48,8 @@ class AlbumsViewControllerTests: XCTestCase {
         let verticalSpacing = sut.collectionView(collectionView, layout: collectionView.collectionViewLayout, minimumLineSpacingForSectionAt: 0)
         XCTAssertEqual(verticalSpacing, 4)
         let itemSize = sut.collectionView(collectionView, layout: collectionView.collectionViewLayout, sizeForItemAt: .init(row: 3, section: 0))
-        XCTAssertEqual(itemSize, CGSize(width: 92, height: 101.2))
+        XCTAssertEqual(itemSize.width, 88)
+        XCTAssertEqual(itemSize.height, 96.8, accuracy: 0.01)
 
         XCTAssertEqual(sut.collectionView(collectionView, numberOfItemsInSection: 0), 0)
 

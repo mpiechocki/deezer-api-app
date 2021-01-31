@@ -16,6 +16,7 @@ class AlbumsView: UIView {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemGray6
+        collectionView.contentInset = .init(top: 0.0, left: 8.0, bottom: 0.0, right: 8.0)
         return collectionView
     }()
 
@@ -26,8 +27,8 @@ class AlbumsView: UIView {
         addSubview(collectionView)
 
         NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])

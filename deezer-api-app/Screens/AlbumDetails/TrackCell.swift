@@ -22,7 +22,7 @@ class TrackCell: UITableViewCell {
     let titleLabel = UILabel()
     let durationLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
         return label
     }()
     let stackView: UIStackView = {
