@@ -3,7 +3,7 @@ import UIKit
 import XCTest
 @testable import deezer_api_app
 
-class SearchViewControllerTest: XCTestCase {
+class SearchViewControllerTests: XCTestCase {
 
     var savedNavigation: NavigationProtocol!
     var navigationSpy: NavigationSpy!
@@ -106,6 +106,27 @@ class SearchViewControllerTest: XCTestCase {
 
         XCTAssertEqual(sut.artists.count, 3)
         XCTAssertEqual(sut.artists, stubbedArtists)
+    }
+
+    func test_search_failure() {
+        let window = UIWindow(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 400)))
+        window.rootViewController = sut
+        window.makeKeyAndVisible()
+        sut.loadViewIfNeeded()
+
+        sut.searchBar(sut.searchView.searchBar, textDidChange: "f")
+
+        let throttling = XCTestExpectation(description: "throttling")
+        _ = XCTWaiter.wait(for: [throttling], timeout: 0.1)
+
+        deezerServiceSpy.stubbedSearchSubject.send(completion: .failure(.somethingWentWrong))
+
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+
+        XCTAssertEqual((sut.presentedViewController as? UIAlertController)?.title, "Error")
+        XCTAssertEqual((sut.presentedViewController as? UIAlertController)?.actions.count, 1)
+        XCTAssertEqual((sut.presentedViewController as? UIAlertController)?.actions.first?.title, "Ok")
     }
 
 }

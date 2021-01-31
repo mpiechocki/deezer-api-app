@@ -84,10 +84,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { print($0) },
+                receiveCompletion: { [weak self] completion in
+                    if case .failure = completion {
+                        self?.handleError()
+                    }
+                },
                 receiveValue: { [weak self] in self?.artists = $0 }
             )
             .store(in: &cancellables)
+    }
+
+    private func handleError() {
+        present(.errorAlert, animated: true)
     }
 
 }
