@@ -54,6 +54,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
 
         let track = tracks[indexPath.row]
         cell.numberLabel.text = "\(track.trackPosition)."
+        cell.diskNumberLabel.text = "disk \(track.diskNumber)."
         cell.titleLabel.text = track.title
         cell.durationLabel.text = "\(track.duration)"
         return cell

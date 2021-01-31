@@ -14,12 +14,18 @@ class TrackCell: UITableViewCell {
     // MARK: - Subviews
 
     let numberLabel = UILabel()
+    let diskNumberLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .caption2)
+        return label
+    }()
     let titleLabel = UILabel()
     let durationLabel = UILabel()
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
+        stackView.alignment = .lastBaseline
         stackView.spacing = 8.0
         return stackView
     }()
@@ -30,8 +36,9 @@ class TrackCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)
 
-        [numberLabel, titleLabel, durationLabel].forEach(stackView.addArrangedSubview)
+        [numberLabel, diskNumberLabel, titleLabel, durationLabel].forEach(stackView.addArrangedSubview)
         numberLabel.setContentHuggingPriority(.required, for: .horizontal)
+        diskNumberLabel.setContentHuggingPriority(.required, for: .horizontal)
         durationLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         NSLayoutConstraint.activate([

@@ -57,11 +57,13 @@ class AlbumDetailsViewControllerTests: XCTestCase {
 
         let cell1 = sut.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? TrackCell
         XCTAssertEqual(cell1?.numberLabel.text, "1.")
+        XCTAssertEqual(cell1?.diskNumberLabel.text, "disk 1.")
         XCTAssertEqual(cell1?.titleLabel.text, "Second Hand News")
         XCTAssertEqual(cell1?.durationLabel.text, "90")
 
         let cell3 = sut.tableView(tableView, cellForRowAt: IndexPath(row: 2, section: 0)) as? TrackCell
         XCTAssertEqual(cell3?.numberLabel.text, "3.")
+        XCTAssertEqual(cell3?.diskNumberLabel.text, "disk 3.")
         XCTAssertEqual(cell3?.titleLabel.text, "Never Going Back Again")
         XCTAssertEqual(cell3?.durationLabel.text, "431")
     }
