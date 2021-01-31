@@ -88,6 +88,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
                 receiveCompletion: { _ in },
                 receiveValue: { [weak self] in
                     self?.albumHeader.imageView.image = $0
+                    self?.albumHeader.imageView.alpha = 1.0
                 }
             )
             .store(in: &cancellables)

@@ -73,13 +73,14 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(deezerServiceSpy.imageCalledWith.count, 1)
         XCTAssertEqual(deezerServiceSpy.imageCalledWith.first, "http://images.com/cover.jpg")
         let headerView = sut.albumDetailsView.tableView.tableHeaderView as? AlbumHeader
-        XCTAssertNil(headerView?.imageView.image)
+        XCTAssertEqual(headerView!.imageView.alpha, 0.3, accuracy: 0.01)
 
         let stubbedImage = UIImage()
         deezerServiceSpy.stubbedImageSubject.send(stubbedImage)
         let mainThread = XCTestExpectation(description: "main thread")
         _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
         XCTAssertTrue(headerView?.imageView.image == stubbedImage)
+        XCTAssertEqual(headerView?.imageView.alpha, 1.0)
     }
 
     func test_loadingTracks() {
