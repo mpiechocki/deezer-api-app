@@ -20,7 +20,11 @@ class TrackCell: UITableViewCell {
         return label
     }()
     let titleLabel = UILabel()
-    let durationLabel = UILabel()
+    let durationLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        return label
+    }()
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -38,14 +42,17 @@ class TrackCell: UITableViewCell {
 
         [numberLabel, diskNumberLabel, titleLabel, durationLabel].forEach(stackView.addArrangedSubview)
         numberLabel.setContentHuggingPriority(.required, for: .horizontal)
+        numberLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         diskNumberLabel.setContentHuggingPriority(.required, for: .horizontal)
+        diskNumberLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         durationLabel.setContentHuggingPriority(.required, for: .horizontal)
+        durationLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4.0),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4.0),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0)
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8.0),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])
     }
 
