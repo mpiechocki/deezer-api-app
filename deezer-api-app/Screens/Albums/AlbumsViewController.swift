@@ -33,7 +33,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        loadAlbums()
+        loadAlbums(fromIndex: 0)
     }
 
     // MARK: - UICollectionViewDataSource
@@ -85,17 +85,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard indexPath.row == albums.count - 1, albums.count < totalAlbums else { return }
-        let index = albums.count
-        deezerService.albums(for: artistId, fromIndex: index)
-            .first()
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { [weak self] _ in self?.handleCompletion() },
-                receiveValue: { [weak self] in
-                    self?.albums += $0.data
-                }
-            )
-            .store(in: &cancellables)
+        loadAlbums(fromIndex: albums.count)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -114,14 +104,14 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
         albumsView.collectionView.delegate = self
     }
 
-    private func loadAlbums() {
-        deezerService.albums(for: artistId, fromIndex: 0)
+    private func loadAlbums(fromIndex: Int) {
+        deezerService.albums(for: artistId, fromIndex: fromIndex)
             .first()
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [weak self] _ in self?.handleCompletion() },
                 receiveValue: { [weak self] in
-                    self?.albums = $0.data
+                    self?.albums += $0.data
                     self?.totalAlbums = $0.total
                 }
             )
