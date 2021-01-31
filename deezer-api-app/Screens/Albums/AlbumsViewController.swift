@@ -121,7 +121,9 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
             .first()
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { [weak self] _ in self?.handleCompletion() },
+                receiveCompletion: { [weak self] completion in
+                    if case .failure = completion { self?.handleError() }
+                },
                 receiveValue: { [weak self] in
                     self?.albums += $0.data
                     self?.totalAlbums = $0.total
@@ -130,6 +132,8 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
             .store(in: &cancellables)
     }
 
-    private func handleCompletion() { /* TODO */ }
+    private func handleError() {
+        present(.errorAlert, animated: true)
+    }
 
 }

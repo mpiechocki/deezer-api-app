@@ -83,7 +83,7 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertEqual(navigationSpy.goCalledWith.first, .albums(title: "Albatross", artistId: 2))
     }
 
-    func test_search_success() {
+    func test_searchSuccess() {
         sut.loadViewIfNeeded()
 
         sut.searchBar(sut.searchView.searchBar, textDidChange: "k")
@@ -108,7 +108,7 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.artists, stubbedArtists)
     }
 
-    func test_search_failure() {
+    func test_searchFailure() {
         let window = UIWindow(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 400)))
         window.rootViewController = sut
         window.makeKeyAndVisible()

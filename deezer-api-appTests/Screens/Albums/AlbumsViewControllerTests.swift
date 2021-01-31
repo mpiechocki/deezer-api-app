@@ -117,6 +117,22 @@ class AlbumsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.albums, .stubbedAlbums)
     }
 
+    func test_loadingAlbumsFailure() {
+        let window = UIWindow(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 400)))
+        window.rootViewController = sut
+        window.makeKeyAndVisible()
+        sut.loadViewIfNeeded()
+
+        deezerServiceSpy.stubbedAlbumsSubject.send(completion: .failure(.somethingWentWrong))
+
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+
+        XCTAssertEqual((sut.presentedViewController as? UIAlertController)?.title, "Error")
+        XCTAssertEqual((sut.presentedViewController as? UIAlertController)?.actions.count, 1)
+        XCTAssertEqual((sut.presentedViewController as? UIAlertController)?.actions.first?.title, "Ok")
+    }
+
     func test_pagination() {
         sut.loadViewIfNeeded()
         let stubbedAlbumsResult1 = AlbumsResult(
