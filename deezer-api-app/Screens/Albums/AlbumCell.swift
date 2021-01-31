@@ -17,9 +17,9 @@ class AlbumCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = nil
-        titleLabel.text = nil
+        imageView.image = UIImage(systemName: "arrow.up.arrow.down")?.withRenderingMode(.alwaysOriginal)
         imageView.alpha = 0.3
+        titleLabel.text = nil
         cancellables = Set<AnyCancellable>()
     }
 

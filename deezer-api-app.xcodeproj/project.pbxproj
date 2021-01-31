@@ -10,6 +10,8 @@
 		8D1791AB25C6B794005F0F45 /* tracks_result.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D1791AA25C6B794005F0F45 /* tracks_result.json */; };
 		8D1791B125C6CC06005F0F45 /* Int+ToMinuesSeconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1791B025C6CC06005F0F45 /* Int+ToMinuesSeconds.swift */; };
 		8D1791C625C6E842005F0F45 /* UIViewController+ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1791C525C6E842005F0F45 /* UIViewController+ErrorAlert.swift */; };
+		8D1791CA25C6EE66005F0F45 /* AlbumCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1791C925C6EE66005F0F45 /* AlbumCellTests.swift */; };
+		8D1791CE25C6EF80005F0F45 /* TrackCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1791CD25C6EF80005F0F45 /* TrackCellTests.swift */; };
 		8D319B7825BF71EB0076ACC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B7725BF71EB0076ACC3 /* AppDelegate.swift */; };
 		8D319B7A25BF71EB0076ACC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B7925BF71EB0076ACC3 /* SceneDelegate.swift */; };
 		8D319B7C25BF71EB0076ACC3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B7B25BF71EB0076ACC3 /* SearchViewController.swift */; };
@@ -79,6 +81,8 @@
 		8D1791AA25C6B794005F0F45 /* tracks_result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tracks_result.json; sourceTree = "<group>"; };
 		8D1791B025C6CC06005F0F45 /* Int+ToMinuesSeconds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+ToMinuesSeconds.swift"; sourceTree = "<group>"; };
 		8D1791C525C6E842005F0F45 /* UIViewController+ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorAlert.swift"; sourceTree = "<group>"; };
+		8D1791C925C6EE66005F0F45 /* AlbumCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCellTests.swift; sourceTree = "<group>"; };
+		8D1791CD25C6EF80005F0F45 /* TrackCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellTests.swift; sourceTree = "<group>"; };
 		8D319B7425BF71EB0076ACC3 /* deezer-api-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "deezer-api-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D319B7725BF71EB0076ACC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D319B7925BF71EB0076ACC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				8D6FA19625C5C25000FBAEF5 /* AlbumDetailsViewControllerTests.swift */,
+				8D1791CD25C6EF80005F0F45 /* TrackCellTests.swift */,
 			);
 			path = AlbumDetails;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				8DDD7C9025C36AEE00AEAA7D /* AlbumsViewControllerTests.swift */,
+				8D1791C925C6EE66005F0F45 /* AlbumCellTests.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 				8D6FA19725C5C25000FBAEF5 /* AlbumDetailsViewControllerTests.swift in Sources */,
 				8DFDAF0425C32E7A0027AFB7 /* NavigationTests.swift in Sources */,
 				8D327DA525C0B683005FF299 /* APIClientTests.swift in Sources */,
+				8D1791CE25C6EF80005F0F45 /* TrackCellTests.swift in Sources */,
 				8D6FA16B25C5A0A900FBAEF5 /* HTTPURLResponse+TestData.swift in Sources */,
 				8DFDAF2125C333270027AFB7 /* ControllerFactoryTests.swift in Sources */,
 				8DABAE2B25C20DA7000F1E62 /* DeezerServiceSpy.swift in Sources */,
@@ -590,6 +597,7 @@
 				8D6FA16525C5933100FBAEF5 /* Array+StubbedAlbums.swift in Sources */,
 				8DABAE1425C1FE71000F1E62 /* DeezerServiceTests.swift in Sources */,
 				8D6FA19D25C5C61200FBAEF5 /* Array+StubbedTracks.swift in Sources */,
+				8D1791CA25C6EE66005F0F45 /* AlbumCellTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,14 @@ class TrackCell: UITableViewCell {
 
     required init?(coder: NSCoder) { nil }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        numberLabel.text = nil
+        diskNumberLabel.text = nil
+        titleLabel.text = nil
+        durationLabel.text = nil
+    }
+
     // MARK: - Subviews
 
     let numberLabel = UILabel()
