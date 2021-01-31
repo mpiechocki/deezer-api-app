@@ -10,7 +10,7 @@ class ControllerFactory: ControllerFactoring {
         case .albums(let artistId):
             controller = AlbumsViewController(artistId: artistId, deezerService: deezerService)
         case .albumDetails(let albumDetails):
-            controller = AlbumDetailsViewController(albumDetails: albumDetails)
+            controller = AlbumDetailsViewController(albumDetails: albumDetails, deezerService: deezerService)
         }
         return controller
     }

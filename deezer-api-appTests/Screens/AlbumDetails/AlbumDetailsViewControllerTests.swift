@@ -5,17 +5,20 @@ import UIKit
 class AlbumDetailsViewControllerTests: XCTestCase {
 
     var albumDetails: AlbumDetails!
+    var deezerServiceSpy: DeezerServiceSpy!
     var sut: AlbumDetailsViewController!
 
     override func setUp() {
         super.setUp()
         albumDetails = .init(albumId: 142, coverPath: "http://images.com/cover.jpg")
-        sut = AlbumDetailsViewController(albumDetails: albumDetails)
+        deezerServiceSpy = DeezerServiceSpy()
+        sut = AlbumDetailsViewController(albumDetails: albumDetails, deezerService: deezerServiceSpy)
     }
 
     override func tearDown() {
         sut = nil
         albumDetails = nil
+        deezerServiceSpy = nil
         super.tearDown()
     }
 
@@ -60,6 +63,20 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(cell3?.numberLabel.text, "3.")
         XCTAssertEqual(cell3?.titleLabel.text, "Never Going Back Again")
         XCTAssertEqual(cell3?.durationLabel.text, "431")
+    }
+
+    func test_loadingCover() {
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(deezerServiceSpy.imageCalledWith.count, 1)
+        XCTAssertEqual(deezerServiceSpy.imageCalledWith.first, "http://images.com/cover.jpg")
+        let headerView = sut.albumDetailsView.tableView.tableHeaderView as? AlbumHeader
+        XCTAssertNil(headerView?.imageView.image)
+
+        let stubbedImage = UIImage()
+        deezerServiceSpy.stubbedImageSubject.send(stubbedImage)
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+        XCTAssertTrue(headerView?.imageView.image == stubbedImage)
     }
 
 }

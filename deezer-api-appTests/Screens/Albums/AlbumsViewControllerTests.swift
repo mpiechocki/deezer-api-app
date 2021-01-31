@@ -77,7 +77,7 @@ class AlbumsViewControllerTests: XCTestCase {
         deezerServiceSpy.stubbedImageSubject.send(stubbedImage)
         let mainThread = XCTestExpectation(description: "main thread")
         _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
-        XCTAssertTrue(cell?.imageView.image === stubbedImage)
+        XCTAssertTrue(cell?.imageView.image == stubbedImage)
     }
 
     func test_loadingAlbums() {

@@ -89,7 +89,7 @@ class DeezerServiceTests: XCTestCase {
 
         let stubbedImage = UIImage()
         apiClientSpy.stubbedLoadImageSubject.send(stubbedImage)
-        XCTAssertTrue(caughtImage === stubbedImage)
+        XCTAssertTrue(caughtImage == stubbedImage)
     }
 
 }

@@ -1,9 +1,11 @@
+import Combine
 import UIKit
 
 class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    init(albumDetails: AlbumDetails) {
+    init(albumDetails: AlbumDetails, deezerService: DeezerServiceProtocol) {
         self.albumDetails = albumDetails
+        self.deezerService = deezerService
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -29,6 +31,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        loadCover()
     }
 
     override func viewDidLayoutSubviews() {
@@ -56,12 +59,26 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
 
     // MARK: - Private
 
+    private let deezerService: DeezerServiceProtocol
+    private lazy var albumHeader = AlbumHeader()
+    private var cancellables = Set<AnyCancellable>()
+
     private func configureTableView() {
         albumDetailsView.tableView.register(TrackCell.self, forCellReuseIdentifier: TrackCell.reuseId)
         albumDetailsView.tableView.dataSource = self
-        let albumHeader = AlbumHeader()
-        albumHeader.imageView.image = UIImage(systemName: "lasso.sparkles")
         albumDetailsView.tableView.tableHeaderView = albumHeader
+    }
+
+    private func loadCover() {
+        deezerService.image(path: albumDetails.coverPath)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [weak self] in
+                    self?.albumHeader.imageView.image = $0
+                }
+            )
+            .store(in: &cancellables)
     }
 
 }
