@@ -105,9 +105,9 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         sut.view.layoutIfNeeded()
 
         let firstPageTracks: [Track] = [
-            .init(title: "Title 1", duration: 90, trackPosition: 1),
-            .init(title: "Title 2", duration: 120, trackPosition: 2),
-            .init(title: "Title 3", duration: 180, trackPosition: 3)
+            .init(title: "Title 1", duration: 90, trackPosition: 1, diskNumber: 1),
+            .init(title: "Title 2", duration: 120, trackPosition: 2, diskNumber: 1),
+            .init(title: "Title 3", duration: 180, trackPosition: 3, diskNumber: 1)
         ]
         XCTAssertEqual(deezerServiceSpy.tracksCalledWith.count, 1)
         deezerServiceSpy.stubbedTracksSubject.send(TracksResult(data: firstPageTracks, total: 5))
@@ -122,19 +122,19 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(deezerServiceSpy.tracksCalledWith.count, 2)
 
         let additionalTracks: [Track] = [
-            .init(title: "Title 5", duration: 12, trackPosition: 5),
-            .init(title: "Title 4", duration: 73, trackPosition: 4)
+            .init(title: "Title 5", duration: 12, trackPosition: 5, diskNumber: 1),
+            .init(title: "Title 4", duration: 73, trackPosition: 1, diskNumber: 2)
         ]
         deezerServiceSpy.stubbedTracksSubject.send(TracksResult(data: additionalTracks, total: 5))
         let mainThread2 = XCTestExpectation(description: "main thread 2")
         _ = XCTWaiter.wait(for: [mainThread2], timeout: 0.1)
 
         let expectedSortedTracks: [Track] = [
-            .init(title: "Title 1", duration: 90, trackPosition: 1),
-            .init(title: "Title 2", duration: 120, trackPosition: 2),
-            .init(title: "Title 3", duration: 180, trackPosition: 3),
-            .init(title: "Title 4", duration: 73, trackPosition: 4),
-            .init(title: "Title 5", duration: 12, trackPosition: 5)
+            .init(title: "Title 1", duration: 90, trackPosition: 1, diskNumber: 1),
+            .init(title: "Title 2", duration: 120, trackPosition: 2, diskNumber: 1),
+            .init(title: "Title 3", duration: 180, trackPosition: 3, diskNumber: 1),
+            .init(title: "Title 5", duration: 12, trackPosition: 5, diskNumber: 1),
+            .init(title: "Title 4", duration: 73, trackPosition: 1, diskNumber: 2)
         ]
         XCTAssertEqual(sut.tracks, expectedSortedTracks)
 

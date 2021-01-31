@@ -294,9 +294,9 @@ private extension Array where Element == Track {
 
     static var realTracks: [Track] {
         [
-            Track(title: "Oops!...I Did It Again", duration: 211, trackPosition: 1),
-            Track(title: "Stronger", duration: 203, trackPosition: 2),
-            Track(title: "Don't Go Knockin' on My Door", duration: 223, trackPosition: 3)
+            Track(title: "Oops!...I Did It Again", duration: 211, trackPosition: 1, diskNumber: 1),
+            Track(title: "Stronger", duration: 203, trackPosition: 2, diskNumber: 1),
+            Track(title: "Don't Go Knockin' on My Door", duration: 223, trackPosition: 3, diskNumber: 1)
         ]
     }
 

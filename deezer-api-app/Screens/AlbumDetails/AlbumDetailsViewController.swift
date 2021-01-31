@@ -97,7 +97,13 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] in
-                    self?.tracks += $0.data.sorted(by: { $0.trackPosition < $1.trackPosition })
+                    let sorted = $0.data.sorted(by: { lhs, rhs in
+                        if lhs.diskNumber <= rhs.diskNumber {
+                            return lhs.trackPosition < rhs.trackPosition
+                        }
+                        return false
+                    })
+                    self?.tracks += sorted
                     self?.totalTracks = $0.total
                   }
             )
