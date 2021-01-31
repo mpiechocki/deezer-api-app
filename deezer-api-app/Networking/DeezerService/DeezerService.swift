@@ -10,7 +10,13 @@ class DeezerService: DeezerServiceProtocol {
     // MARK: - DeezerServiceProtocol
 
     func search(query: String) -> AnyPublisher<[Artist], APIError> {
-        apiClient.perform(.search(query: query))
+        guard !query.isEmpty else {
+            return Just([Artist]())
+                .mapError { _ in APIError.somethingWentWrong }
+                .eraseToAnyPublisher()
+        }
+
+        return apiClient.perform(.search(query: query))
             .map { (result: SearchResult) -> [Artist] in result.data }
             .eraseToAnyPublisher()
     }

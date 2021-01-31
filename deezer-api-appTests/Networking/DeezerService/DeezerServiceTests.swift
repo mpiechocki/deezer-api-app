@@ -47,6 +47,21 @@ class DeezerServiceTests: XCTestCase {
         XCTAssertEqual(caughtArtists.first, searchResult.data)
     }
 
+    func test_seachEmptyQuery() {
+        var caughtArtists = [[Artist]]()
+
+        sut.search(query: "")
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { caughtArtists.append($0) }
+            )
+            .store(in: &cancellables)
+
+        XCTAssertEqual(apiClientSpy.performCalledWith.count, 0)
+        XCTAssertEqual(caughtArtists.count, 1)
+        XCTAssertEqual(caughtArtists.first, [])
+    }
+
     func test_albums() {
         var caughtAlbumsResult = [AlbumsResult]()
 
