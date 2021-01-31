@@ -88,6 +88,18 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(headerView?.imageView.alpha, 1.0)
     }
 
+    func test_loadingCoverFailure() {
+        sut.loadViewIfNeeded()
+        let headerView = sut.albumDetailsView.tableView.tableHeaderView as? AlbumHeader
+        XCTAssertEqual(headerView!.imageView.alpha, 0.3, accuracy: 0.01)
+
+        deezerServiceSpy.stubbedImageSubject.send(completion: .failure(.somethingWentWrong))
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+        XCTAssertTrue(headerView?.imageView.image === UIImage(systemName: "arrow.up.arrow.down")?.withRenderingMode(.alwaysOriginal))
+        XCTAssertEqual(headerView!.imageView.alpha, 0.3, accuracy: 0.01)
+    }
+
     func test_loadingTracksSuccess() {
         sut.loadViewIfNeeded()
         XCTAssertEqual(deezerServiceSpy.tracksCalledWith.count, 1)

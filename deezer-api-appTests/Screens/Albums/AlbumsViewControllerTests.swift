@@ -86,6 +86,22 @@ class AlbumsViewControllerTests: XCTestCase {
         XCTAssertEqual(cell?.imageView.alpha, 1.0)
     }
 
+    func test_loadingCellImagesFailure() {
+        sut.loadViewIfNeeded()
+        sut.view.frame = .init(origin: .zero, size: .init(width: 200, height: 500))
+        sut.view.layoutIfNeeded()
+
+        let collectionView = sut.albumsView.collectionView
+        sut.albums = .stubbedAlbums
+        let cell = sut.collectionView(collectionView, cellForItemAt: IndexPath(row: 0, section: 0)) as? AlbumCell
+
+        deezerServiceSpy.stubbedImageSubject.send(completion: .failure(.somethingWentWrong))
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+        XCTAssertTrue(cell?.imageView.image === UIImage(systemName: "arrow.up.arrow.down")?.withRenderingMode(.alwaysOriginal))
+        XCTAssertEqual(cell!.imageView.alpha, 0.3, accuracy: 0.01)
+    }
+
     func test_loadingCellImagesWhileCellIsReused() {
         sut.loadViewIfNeeded()
         sut.view.frame = .init(origin: .zero, size: .init(width: 200, height: 500))
