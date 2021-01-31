@@ -46,6 +46,14 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.searchView.searchBar.delegate === sut)
     }
 
+    func test_dismissingKeyboard() {
+        sut.loadViewIfNeeded()
+        sut.searchView.searchBar.becomeFirstResponder()
+
+        sut.searchBarSearchButtonClicked(sut.searchView.searchBar)
+        XCTAssertTrue(!sut.searchView.searchBar.isFirstResponder)
+    }
+
     func test_tableView() {
         sut.loadViewIfNeeded()
 

@@ -58,6 +58,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchTextSubject.send(searchText)
     }
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
     // MARK: - Private
 
     private let deezerService: DeezerServiceProtocol
