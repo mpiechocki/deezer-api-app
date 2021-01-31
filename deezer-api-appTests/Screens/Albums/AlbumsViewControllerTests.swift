@@ -146,7 +146,7 @@ class AlbumsViewControllerTests: XCTestCase {
 
         sut.collectionView(collectionView, didSelectItemAt: IndexPath(row: 2, section: 0))
         XCTAssertEqual(navigationSpy.goCalledWith.count, 1)
-        XCTAssertEqual(navigationSpy.goCalledWith.first, .albumDetails)
+        XCTAssertEqual(navigationSpy.goCalledWith.first, .albumDetails(albumDetails: .init(albumId: 0, coverPath: "")))
     }
 
 }

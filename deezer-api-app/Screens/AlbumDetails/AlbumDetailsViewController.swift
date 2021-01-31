@@ -2,13 +2,14 @@ import UIKit
 
 class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    init() {
+    init(albumDetails: AlbumDetails) {
+        self.albumDetails = albumDetails
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) { nil }
 
-    let albumDetails: AlbumDetails = .init(albumId: 4, coverPath: "asda")
+    let albumDetails: AlbumDetails
     var tracks = [Track]() {
         didSet {
             albumDetailsView.tableView.reloadData()

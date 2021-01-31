@@ -4,15 +4,18 @@ import UIKit
 
 class AlbumDetailsViewControllerTests: XCTestCase {
 
+    var albumDetails: AlbumDetails!
     var sut: AlbumDetailsViewController!
 
     override func setUp() {
         super.setUp()
-        sut = AlbumDetailsViewController()
+        albumDetails = .init(albumId: 142, coverPath: "http://images.com/cover.jpg")
+        sut = AlbumDetailsViewController(albumDetails: albumDetails)
     }
 
     override func tearDown() {
         sut = nil
+        albumDetails = nil
         super.tearDown()
     }
 

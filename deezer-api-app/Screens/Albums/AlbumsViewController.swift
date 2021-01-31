@@ -99,7 +99,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Environment.navigation.go(to: .albumDetails)
+        Environment.navigation.go(to: .albumDetails(albumDetails: .init(albumId: 0, coverPath: "")))
     }
 
     // MARK: - Private
