@@ -17,6 +17,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             albumDetailsView.tableView.reloadData()
         }
     }
+    var totalTracks = 0
 
     // MARK: - View
 
@@ -32,6 +33,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
         configureTableView()
         loadCover()
+        loadTracks(fromIndex: 0)
     }
 
     override func viewDidLayoutSubviews() {
@@ -77,6 +79,19 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
                 receiveValue: { [weak self] in
                     self?.albumHeader.imageView.image = $0
                 }
+            )
+            .store(in: &cancellables)
+    }
+
+    private func loadTracks(fromIndex index: Int) {
+        deezerService.tracks(for: albumDetails.albumId, fromIndex: index)
+            .first()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { [weak self] in
+                    self?.tracks += $0.data
+                    self?.totalTracks = $0.total
+                  }
             )
             .store(in: &cancellables)
     }

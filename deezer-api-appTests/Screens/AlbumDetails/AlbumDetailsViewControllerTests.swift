@@ -79,4 +79,23 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(headerView?.imageView.image == stubbedImage)
     }
 
+    func test_loadingTracks() {
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(deezerServiceSpy.tracksCalledWith.count, 1)
+        XCTAssertEqual(deezerServiceSpy.tracksCalledWith.first?.albumId, 142)
+        XCTAssertEqual(deezerServiceSpy.tracksCalledWith.first?.index, 0)
+
+        XCTAssertEqual(sut.tracks.count, 0)
+        let tracksResult = TracksResult(data: .stubbedTracks, total: 3)
+        deezerServiceSpy.stubbedTracksSubject.send(tracksResult)
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+        XCTAssertEqual(sut.tracks, tracksResult.data)
+
+        deezerServiceSpy.stubbedTracksSubject.send(tracksResult)
+        let mainThread2 = XCTestExpectation(description: "main thread 2")
+        _ = XCTWaiter.wait(for: [mainThread2], timeout: 0.1)
+        XCTAssertEqual(sut.tracks.count, 3)
+    }
+
 }
