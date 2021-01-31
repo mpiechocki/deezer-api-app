@@ -24,6 +24,11 @@ class DeezerService: DeezerServiceProtocol {
         apiClient.loadImage(url: path)
     }
 
+    func tracks(for albumId: Int, fromIndex index: Int) -> AnyPublisher<TracksResult, APIError> {
+        apiClient.perform(.tracks(albumId: albumId, index: index))
+            .eraseToAnyPublisher()
+    }
+
     // MARK: - Private
 
     private let apiClient: APIClientProtocol

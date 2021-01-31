@@ -199,7 +199,7 @@ class APIClientTests: XCTestCase {
         XCTAssertNil(caughtImage)
     }
 
-    func test_loadImageFailure() throws {
+    func test_loadImageFailure() {
         var caughtError: APIError?
 
         sut.loadImage(url: "http://url.to/image.jpg")
@@ -217,7 +217,7 @@ class APIClientTests: XCTestCase {
         XCTAssertEqual(caughtError, .somethingWentWrong)
     }
 
-    func test_loadImageBadURL() throws {
+    func test_loadImageBadURL() {
         var caughtError: APIError?
 
         sut.loadImage(url: "bad url")
@@ -233,6 +233,32 @@ class APIClientTests: XCTestCase {
 
         dataTaskProviderSpy.stubbedTaskSubject.send((data: Data(), response: HTTPURLResponse.success))
         XCTAssertEqual(caughtError, .somethingWentWrong)
+    }
+
+    func test_tracks() throws {
+        var caughtTracksResult: TracksResult?
+
+        sut.perform(.tracks(albumId: 158, index: 4))
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { caughtTracksResult = $0 }
+            )
+            .store(in: &cancellables)
+
+        XCTAssertEqual(dataTaskProviderSpy.dataTaskPublisherCalledWith.count, 1)
+        let urlString = dataTaskProviderSpy.dataTaskPublisherCalledWith.first?.absoluteString
+        XCTAssertEqual(urlString, "https://api.deezer.com/album/158/tracks?index=4")
+
+        let bundle = Bundle(for: type(of:self))
+        let resultPath = bundle.path(forResource: "tracks_result", ofType: "json")!
+        let contentsData = try String(contentsOfFile: resultPath).data(using: .utf8)!
+
+        dataTaskProviderSpy.stubbedTaskSubject.send((data: contentsData, response: HTTPURLResponse.success))
+        XCTAssertEqual(caughtTracksResult?.data.count, 3)
+
+        let expectedTracks: [Track] = .realTracks
+
+        let actualAlbums = caughtTracksResult?.data
+        XCTAssertEqual(actualAlbums, expectedTracks)
     }
 
 }
@@ -259,6 +285,18 @@ private extension Array where Element == Album {
                 coverMedium: "http://e-cdn-images.deezer.com/images/cover/bf74fc764097630ba58782ae79cfbee6/250x250-000000-80-0-0.jpg",
                 coverXl: "http://e-cdn-images.deezer.com/images/cover/bf74fc764097630ba58782ae79cfbee6/1000x1000-000000-80-0-0.jpg"
             )
+        ]
+    }
+
+}
+
+private extension Array where Element == Track {
+
+    static var realTracks: [Track] {
+        [
+            Track(title: "Oops!...I Did It Again", duration: 211, trackPosition: 1),
+            Track(title: "Stronger", duration: 203, trackPosition: 2),
+            Track(title: "Don't Go Knockin' on My Door", duration: 223, trackPosition: 3)
         ]
     }
 

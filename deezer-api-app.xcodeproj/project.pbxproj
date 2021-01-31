@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D1791AB25C6B794005F0F45 /* tracks_result.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D1791AA25C6B794005F0F45 /* tracks_result.json */; };
 		8D319B7825BF71EB0076ACC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B7725BF71EB0076ACC3 /* AppDelegate.swift */; };
 		8D319B7A25BF71EB0076ACC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B7925BF71EB0076ACC3 /* SceneDelegate.swift */; };
 		8D319B7C25BF71EB0076ACC3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D319B7B25BF71EB0076ACC3 /* SearchViewController.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D1791AA25C6B794005F0F45 /* tracks_result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tracks_result.json; sourceTree = "<group>"; };
 		8D319B7425BF71EB0076ACC3 /* deezer-api-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "deezer-api-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D319B7725BF71EB0076ACC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D319B7925BF71EB0076ACC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				8DFDAEDF25C32A200027AFB7 /* albums_result.json */,
 				8DF62E4225C1D85100A20FE3 /* broken_search_results.json */,
 				8DF62E3C25C1D09900A20FE3 /* search_result.json */,
+				8D1791AA25C6B794005F0F45 /* tracks_result.json */,
 				8D6FA16E25C5A0E700FBAEF5 /* daftpunk.jpg */,
 			);
 			path = JSONs;
@@ -510,6 +513,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D1791AB25C6B794005F0F45 /* tracks_result.json in Resources */,
 				8D6FA16F25C5A0E700FBAEF5 /* daftpunk.jpg in Resources */,
 				8DF62E3D25C1D09900A20FE3 /* search_result.json in Resources */,
 				8DF62E4325C1D85100A20FE3 /* broken_search_results.json in Resources */,

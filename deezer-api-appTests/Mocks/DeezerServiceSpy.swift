@@ -10,6 +10,8 @@ class DeezerServiceSpy: DeezerServiceProtocol {
     var stubbedAlbumsSubject = PassthroughSubject<AlbumsResult, APIError>()
     var imageCalledWith = [String]()
     var stubbedImageSubject = PassthroughSubject<UIImage?, APIError>()
+    var tracksCalledWith = [(albumId: Int, index: Int)]()
+    let stubbedTracksSubject = PassthroughSubject<TracksResult, APIError>()
 
     // MARK: - DeezerServiceProtocol
 
@@ -29,6 +31,12 @@ class DeezerServiceSpy: DeezerServiceProtocol {
         imageCalledWith.append(path)
 
         return stubbedImageSubject.eraseToAnyPublisher()
+    }
+
+    func tracks(for albumId: Int, fromIndex: Int) -> AnyPublisher<TracksResult, APIError> {
+        tracksCalledWith.append((albumId, fromIndex))
+
+        return stubbedTracksSubject.eraseToAnyPublisher()
     }
 
 }

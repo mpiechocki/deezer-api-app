@@ -51,7 +51,7 @@ class DeezerServiceTests: XCTestCase {
         var caughtAlbumsResult = [AlbumsResult]()
 
         sut.albums(for: 243, fromIndex: 0)
-            .sink(receiveCompletion: { _ in},
+            .sink(receiveCompletion: { _ in },
                   receiveValue: { caughtAlbumsResult.append($0) }
             )
             .store(in: &cancellables)
@@ -90,6 +90,28 @@ class DeezerServiceTests: XCTestCase {
         let stubbedImage = UIImage()
         apiClientSpy.stubbedLoadImageSubject.send(stubbedImage)
         XCTAssertTrue(caughtImage == stubbedImage)
+    }
+
+    func test_tracks() {
+        var caughtTracksResult = [TracksResult]()
+
+        sut.tracks(for: 8, fromIndex: 3)
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { caughtTracksResult.append($0) }
+            )
+            .store(in: &cancellables)
+
+        XCTAssertEqual(apiClientSpy.performCalledWith.count, 1)
+        XCTAssertEqual(apiClientSpy.performCalledWith.first, APIEndpoint.tracks(albumId: 8, index: 3))
+        XCTAssertEqual(caughtTracksResult.count, 0)
+
+        let tracksResult = TracksResult(
+            data: .stubbedTracks,
+            total: 3
+        )
+        apiClientSpy.stubbedPerformSubject.send(tracksResult)
+        XCTAssertEqual(caughtTracksResult.count, 1)
+        XCTAssertEqual(caughtTracksResult.first, tracksResult)
     }
 
 }
