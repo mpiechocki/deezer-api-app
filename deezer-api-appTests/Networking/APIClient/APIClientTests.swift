@@ -153,11 +153,7 @@ class APIClientTests: XCTestCase {
         dataTaskProviderSpy.stubbedTaskSubject.send((data: contentsData, response: HTTPURLResponse.success))
         XCTAssertEqual(caughtAlbumsResult?.data.count, 3)
 
-        let expectedAlbums: [Album] = [
-            .init(id: 194219042, title: "Music To Be Murdered By - Side B (Deluxe Edition)", coverMedium: "http://e-cdn-images.deezer.com/images/cover/55d424a53904d145b17869ba133843d7/250x250-000000-80-0-0.jpg"),
-            .init(id: 127270232, title: "Music To Be Murdered By", coverMedium: "http://e-cdn-images.deezer.com/images/cover/4d00a7848dc8af475973ff1761ad828d/250x250-000000-80-0-0.jpg"),
-            .init(id: 72000342, title: "Kamikaze", coverMedium: "http://e-cdn-images.deezer.com/images/cover/bf74fc764097630ba58782ae79cfbee6/250x250-000000-80-0-0.jpg")
-        ]
+        let expectedAlbums: [Album] = .realAlbums
 
         let actualAlbums = caughtAlbumsResult?.data
         XCTAssertEqual(actualAlbums, expectedAlbums)
@@ -237,6 +233,33 @@ class APIClientTests: XCTestCase {
 
         dataTaskProviderSpy.stubbedTaskSubject.send((data: Data(), response: HTTPURLResponse.success))
         XCTAssertEqual(caughtError, .somethingWentWrong)
+    }
+
+}
+
+private extension Array where Element == Album {
+
+    static var realAlbums: [Album] {
+        [
+            Album(
+                id: 194219042,
+                title: "Music To Be Murdered By - Side B (Deluxe Edition)",
+                coverMedium: "http://e-cdn-images.deezer.com/images/cover/55d424a53904d145b17869ba133843d7/250x250-000000-80-0-0.jpg",
+                coverXl: "http://e-cdn-images.deezer.com/images/cover/55d424a53904d145b17869ba133843d7/1000x1000-000000-80-0-0.jpg"
+            ),
+            Album(
+                id: 127270232,
+                title: "Music To Be Murdered By",
+                coverMedium: "http://e-cdn-images.deezer.com/images/cover/4d00a7848dc8af475973ff1761ad828d/250x250-000000-80-0-0.jpg",
+                coverXl: "http://e-cdn-images.deezer.com/images/cover/4d00a7848dc8af475973ff1761ad828d/1000x1000-000000-80-0-0.jpg"
+            ),
+            Album(
+                id: 72000342,
+                title: "Kamikaze",
+                coverMedium: "http://e-cdn-images.deezer.com/images/cover/bf74fc764097630ba58782ae79cfbee6/250x250-000000-80-0-0.jpg",
+                coverXl: "http://e-cdn-images.deezer.com/images/cover/bf74fc764097630ba58782ae79cfbee6/1000x1000-000000-80-0-0.jpg"
+            )
+        ]
     }
 
 }

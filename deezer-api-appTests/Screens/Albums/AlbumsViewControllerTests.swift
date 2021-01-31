@@ -96,7 +96,7 @@ class AlbumsViewControllerTests: XCTestCase {
     func test_pagination() {
         sut.loadViewIfNeeded()
         let stubbedAlbumsResult1 = AlbumsResult(
-            data: [.init(id: 128, title: "+", coverMedium: ""), .init(id: 129, title: "*", coverMedium: "")],
+            data: [.init(id: 128, title: "+", coverMedium: "", coverXl: ""), .init(id: 129, title: "*", coverMedium: "", coverXl: "")],
             total: 5
         )
         deezerServiceSpy.stubbedAlbumsSubject.send(stubbedAlbumsResult1)
@@ -117,9 +117,9 @@ class AlbumsViewControllerTests: XCTestCase {
 
         let stubbedAlbumsResult2 = AlbumsResult(
             data: [
-                .init(id: 130, title: "/", coverMedium: ""),
-                .init(id: 131, title: "Greatest hits", coverMedium: ""),
-                .init(id: 132, title: "+ (Deluxe)", coverMedium: "")
+                .init(id: 130, title: "/", coverMedium: "", coverXl: ""),
+                .init(id: 131, title: "Greatest hits", coverMedium: "", coverXl: ""),
+                .init(id: 132, title: "+ (Deluxe)", coverMedium: "", coverXl: "")
             ],
             total: 5
         )

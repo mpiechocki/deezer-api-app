@@ -62,9 +62,9 @@ class DeezerServiceTests: XCTestCase {
 
         let albumsResult = AlbumsResult(
             data: [
-                .init(id: 1, title: "Life Is Peachy", coverMedium: ""),
-                .init(id: 2, title: "Korn", coverMedium: ""),
-                .init(id: 3, title: "Follow the leader", coverMedium: "")
+                .init(id: 1, title: "Life Is Peachy", coverMedium: "", coverXl: ""),
+                .init(id: 2, title: "Korn", coverMedium: "", coverXl: ""),
+                .init(id: 3, title: "Follow the leader", coverMedium: "", coverXl: "")
             ],
             total: 3
         )
