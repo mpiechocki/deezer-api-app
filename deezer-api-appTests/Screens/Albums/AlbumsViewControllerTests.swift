@@ -71,13 +71,32 @@ class AlbumsViewControllerTests: XCTestCase {
         let cell = sut.collectionView(collectionView, cellForItemAt: IndexPath(row: 0, section: 0)) as? AlbumCell
         XCTAssertEqual(deezerServiceSpy.imageCalledWith.count, 1)
         XCTAssertEqual(deezerServiceSpy.imageCalledWith.first, "https://url.to/128.jpg")
-        XCTAssertNil(cell?.imageView.image)
+        XCTAssertEqual(cell!.imageView.alpha, 0.3, accuracy: 0.01)
 
         let stubbedImage = UIImage()
         deezerServiceSpy.stubbedImageSubject.send(stubbedImage)
         let mainThread = XCTestExpectation(description: "main thread")
         _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
         XCTAssertTrue(cell?.imageView.image == stubbedImage)
+        XCTAssertEqual(cell?.imageView.alpha, 1.0)
+    }
+
+    func test_loadingCellImagesWhileCellIsReused() {
+        sut.loadViewIfNeeded()
+        sut.view.frame = .init(origin: .zero, size: .init(width: 200, height: 500))
+        sut.view.layoutIfNeeded()
+
+        let collectionView = sut.albumsView.collectionView
+        sut.albums = .stubbedAlbums
+        let cell = sut.collectionView(collectionView, cellForItemAt: IndexPath(row: 0, section: 0)) as? AlbumCell
+        XCTAssertEqual(deezerServiceSpy.imageCalledWith.count, 1)
+
+        cell?.prepareForReuse()
+        let stubbedImage = UIImage()
+        deezerServiceSpy.stubbedImageSubject.send(stubbedImage)
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+        XCTAssertEqual(cell!.imageView.alpha, 0.3, accuracy: 0.01)
     }
 
     func test_loadingAlbums() {

@@ -53,7 +53,10 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in },
-                receiveValue: { cell.imageView.image = $0 }
+                receiveValue: {
+                    cell.imageView.image = $0
+                    cell.imageView.alpha = 1.0
+                }
             )
             .store(in: &cell.cancellables)
 

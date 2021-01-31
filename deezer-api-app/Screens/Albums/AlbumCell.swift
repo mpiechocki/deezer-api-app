@@ -18,12 +18,18 @@ class AlbumCell: UICollectionViewCell {
         super.prepareForReuse()
         imageView.image = nil
         titleLabel.text = nil
+        imageView.alpha = 0.3
         cancellables = Set<AnyCancellable>()
     }
 
     // MARK: - Subviews
 
-    let imageView = UIImageView()
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "arrow.up.arrow.down")?.withRenderingMode(.alwaysOriginal)
+        imageView.alpha = 0.3
+        return imageView
+    }()
     let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
