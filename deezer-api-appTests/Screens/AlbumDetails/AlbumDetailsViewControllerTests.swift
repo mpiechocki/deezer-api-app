@@ -88,7 +88,7 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(headerView?.imageView.alpha, 1.0)
     }
 
-    func test_loadingTracks() {
+    func test_loadingTracksSuccess() {
         sut.loadViewIfNeeded()
         XCTAssertEqual(deezerServiceSpy.tracksCalledWith.count, 1)
         XCTAssertEqual(deezerServiceSpy.tracksCalledWith.first?.albumId, 142)
@@ -105,6 +105,23 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         let mainThread2 = XCTestExpectation(description: "main thread 2")
         _ = XCTWaiter.wait(for: [mainThread2], timeout: 0.1)
         XCTAssertEqual(sut.tracks.count, 3)
+    }
+
+    func test_loadingTracksFailure() {
+        let window = UIWindow(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 400)))
+        window.rootViewController = sut
+        window.makeKeyAndVisible()
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(deezerServiceSpy.tracksCalledWith.count, 1)
+
+        deezerServiceSpy.stubbedTracksSubject.send(completion: .failure(.somethingWentWrong))
+        let mainThread = XCTestExpectation(description: "main thread")
+        _ = XCTWaiter.wait(for: [mainThread], timeout: 0.1)
+
+        XCTAssertEqual((sut.presentedViewController as? UIAlertController)?.title, "Error")
+        XCTAssertEqual((sut.presentedViewController as? UIAlertController)?.actions.count, 1)
+        XCTAssertEqual((sut.presentedViewController as? UIAlertController)?.actions.first?.title, "Ok")
     }
 
     func test_loadingMoreTracks() {

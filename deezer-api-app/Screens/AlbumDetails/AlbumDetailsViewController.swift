@@ -100,8 +100,11 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         deezerService.tracks(for: albumDetails.albumId, fromIndex: index)
             .first()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in },
-                  receiveValue: { [weak self] in
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    if case .failure = completion { self?.handleError() }
+                },
+                receiveValue: { [weak self] in
                     let sorted = $0.data.sorted(by: { lhs, rhs in
                         if lhs.diskNumber <= rhs.diskNumber {
                             return lhs.trackPosition < rhs.trackPosition
@@ -113,6 +116,10 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
                   }
             )
             .store(in: &cancellables)
+    }
+
+    private func handleError() {
+        present(.errorAlert, animated: true)
     }
 
 }
