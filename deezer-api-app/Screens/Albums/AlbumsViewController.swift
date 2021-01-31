@@ -3,10 +3,11 @@ import UIKit
 
 class AlbumsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    init(artistId: Int, deezerService: DeezerServiceProtocol) {
+    init(title: String, artistId: Int, deezerService: DeezerServiceProtocol) {
         self.artistId = artistId
         self.deezerService = deezerService
         super.init(nibName: nil, bundle: nil)
+        self.title = title
     }
 
     required init?(coder: NSCoder) { nil }
@@ -93,7 +94,15 @@ class AlbumsViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let album = albums[indexPath.row]
-        Environment.navigation.go(to: .albumDetails(albumDetails: .init(albumId: album.id, coverPath: album.coverXl)))
+        Environment.navigation.go(
+            to: .albumDetails(
+                albumDetails: .init(
+                    name: album.title,
+                    albumId: album.id,
+                    coverPath: album.coverXl
+                )
+            )
+        )
     }
 
     // MARK: - Private

@@ -8,6 +8,7 @@ class AlbumCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
+        contentView.backgroundColor = .white
     }
 
     required init?(coder: NSCoder) { nil }
@@ -32,6 +33,7 @@ class AlbumCell: UICollectionViewCell {
     }()
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.numberOfLines = 2
         return label
     }()

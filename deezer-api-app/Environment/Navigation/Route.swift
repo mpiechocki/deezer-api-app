@@ -1,5 +1,5 @@
 enum Route: Equatable {
     case search
-    case albums(artistId: Int)
+    case albums(title: String, artistId: Int)
     case albumDetails(albumDetails: AlbumDetails)
 }

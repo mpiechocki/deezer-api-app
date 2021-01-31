@@ -4,6 +4,7 @@ class AlbumHeader: UIView {
 
     init() {
         super.init(frame: .zero)
+        backgroundColor = .systemGray6
         setupLayout()
     }
 

@@ -4,7 +4,7 @@ class AlbumDetailsView: UIView {
 
     init() {
         super.init(frame: .zero)
-        backgroundColor = .white
+        backgroundColor = .systemGray6
         setupLayout()
     }
 
@@ -12,7 +12,11 @@ class AlbumDetailsView: UIView {
 
     // MARK: - Subviews
 
-    let tableView = UITableView()
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .systemGray6
+        return tableView
+    }()
 
     // MARK: - Private
 

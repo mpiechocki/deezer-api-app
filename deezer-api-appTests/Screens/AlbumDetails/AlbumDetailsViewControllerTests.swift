@@ -10,7 +10,7 @@ class AlbumDetailsViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        albumDetails = .init(albumId: 142, coverPath: "http://images.com/cover.jpg")
+        albumDetails = .init(name: "Kamikaze", albumId: 142, coverPath: "http://images.com/cover.jpg")
         deezerServiceSpy = DeezerServiceSpy()
         sut = AlbumDetailsViewController(albumDetails: albumDetails, deezerService: deezerServiceSpy)
     }
@@ -20,6 +20,10 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         albumDetails = nil
         deezerServiceSpy = nil
         super.tearDown()
+    }
+
+    func test_title() {
+        XCTAssertEqual(sut.title, "Kamikaze")
     }
 
     func test_view() {
@@ -33,6 +37,7 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.albumDetailsView.tableView.dataSource === sut)
         XCTAssertTrue(sut.albumDetailsView.tableView.delegate === sut)
         XCTAssertNotNil(sut.albumDetailsView.tableView.tableHeaderView as? AlbumHeader)
+        XCTAssertNotNil(sut.albumDetailsView.tableView.tableFooterView)
     }
 
     func test_tableViewHeaderView() {

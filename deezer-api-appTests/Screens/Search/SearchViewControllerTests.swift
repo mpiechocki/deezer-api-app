@@ -29,6 +29,10 @@ class SearchViewControllerTest: XCTestCase {
         super.tearDown()
     }
 
+    func test_title() {
+        XCTAssertEqual(sut.title, "Search")
+    }
+
     func test_view() {
         sut.loadViewIfNeeded()
 
@@ -76,7 +80,7 @@ class SearchViewControllerTest: XCTestCase {
 
         sut.tableView(tableView, didSelectRowAt: IndexPath(row: 1, section: 0))
         XCTAssertEqual(navigationSpy.goCalledWith.count, 1)
-        XCTAssertEqual(navigationSpy.goCalledWith.first, .albums(artistId: 2))
+        XCTAssertEqual(navigationSpy.goCalledWith.first, .albums(title: "Albatross", artistId: 2))
     }
 
     func test_search_success() {

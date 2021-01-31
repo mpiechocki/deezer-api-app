@@ -7,6 +7,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         self.albumDetails = albumDetails
         self.deezerService = deezerService
         super.init(nibName: nil, bundle: nil)
+        self.title = albumDetails.name
     }
 
     required init?(coder: NSCoder) { nil }
@@ -79,6 +80,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         albumDetailsView.tableView.delegate = self
         albumDetailsView.tableView.dataSource = self
         albumDetailsView.tableView.tableHeaderView = albumHeader
+        albumDetailsView.tableView.tableFooterView = UIView()
     }
 
     private func loadCover() {

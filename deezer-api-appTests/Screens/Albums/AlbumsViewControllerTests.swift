@@ -16,7 +16,7 @@ class AlbumsViewControllerTests: XCTestCase {
 
 
         deezerServiceSpy = DeezerServiceSpy()
-        sut = AlbumsViewController(artistId: 123456, deezerService: deezerServiceSpy)
+        sut = AlbumsViewController(title: "Eminem", artistId: 123456, deezerService: deezerServiceSpy)
     }
 
     override func tearDown() {
@@ -27,6 +27,10 @@ class AlbumsViewControllerTests: XCTestCase {
         Environment.navigation = savedNavigation
         savedNavigation = nil
         super.tearDown()
+    }
+
+    func test_title() {
+        XCTAssertEqual(sut.title, "Eminem")
     }
 
     func test_collectionView() {
@@ -165,7 +169,7 @@ class AlbumsViewControllerTests: XCTestCase {
 
         sut.collectionView(collectionView, didSelectItemAt: IndexPath(row: 2, section: 0))
         XCTAssertEqual(navigationSpy.goCalledWith.count, 1)
-        let expectedAlbumDetails = AlbumDetails(albumId: 1024, coverPath: "https://url.to/2048.jpg")
+        let expectedAlbumDetails = AlbumDetails(name: "Master Of Puppets", albumId: 1024, coverPath: "https://url.to/2048.jpg")
         XCTAssertEqual(navigationSpy.goCalledWith.first, .albumDetails(albumDetails: expectedAlbumDetails))
     }
 

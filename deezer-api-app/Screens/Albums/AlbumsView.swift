@@ -4,7 +4,7 @@ class AlbumsView: UIView {
 
     init() {
         super.init(frame: .zero)
-        backgroundColor = .white
+        backgroundColor = .systemGray6
         setupLayout()
     }
 
@@ -15,7 +15,7 @@ class AlbumsView: UIView {
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemGray6
         return collectionView
     }()
 

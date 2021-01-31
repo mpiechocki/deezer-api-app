@@ -6,6 +6,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     init(deezerService: DeezerServiceProtocol) {
         self.deezerService = deezerService
         super.init(nibName: nil, bundle: nil)
+        self.title = "Search"
     }
 
     required init?(coder: NSCoder) { nil }
@@ -48,7 +49,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let artist = artists[indexPath.row]
-        Environment.navigation.go(to: .albums(artistId: artist.id))
+        Environment.navigation.go(to: .albums(title: artist.name, artistId: artist.id))
     }
 
     // MARK: - UISearchBarDelegate
